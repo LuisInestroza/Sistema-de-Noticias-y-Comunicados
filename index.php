@@ -68,6 +68,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             <div class="nav">
                 <a href="logout.php">Cerrar Sesion</a> 
             </div>
+            <div class="nav">
+                <p>
+                    Bienvenido(a) <br>
+                    <?php echo $_SESSION['nombre']; ?>
+                </p>
+            </div>
            
         </div>  
         
