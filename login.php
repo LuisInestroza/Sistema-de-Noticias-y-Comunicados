@@ -12,7 +12,7 @@ require_once("./config/db.php");
 
 
 // Definir variables
-$nombreUsuario = $password = "";
+$nombre = $nombreUsuario = $password = "";
 $Error= "";
 
 // Verificar el procesamiento post
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar las credenciales
     if (empty($Error)) {
         // Query
-        $sql = "SELECT `idUsuario`, `nombreUsuario`, `password` FROM `usuario` WHERE `nombreUsuario` = ?";
+        $sql = "SELECT `idUsuario`,`nombre`, `nombreUsuario`, `password` FROM `usuario` WHERE `nombreUsuario` = ?";
 
         if ($stmt = mysqli_prepare($conexion, $sql)) {
             mysqli_stmt_bind_param($stmt, "s", $paramNombreUsuario);
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Verifica que exista un usuario en la base de datos
                 if (mysqli_stmt_num_rows($stmt) == 1) {
                     // Enlazar los valores
-                    mysqli_stmt_bind_result($stmt, $id, $nombreUsuario, $password);
+                    mysqli_stmt_bind_result($stmt, $id, $nombre, $nombreUsuario, $password);
                     if (mysqli_stmt_fetch($stmt)) {
                         if ($_POST['password'] === $password) {
                             // Si la contraseña es correcta iniciar sesion
@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             // Store de variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["idUsuario"] = $id;
+                            $_SESSION["nombre"] = $nombre;
                             $_SESSION["nombreUsuario"] = $nombreUsuario;
 
                             // Redireccionar a la pagina

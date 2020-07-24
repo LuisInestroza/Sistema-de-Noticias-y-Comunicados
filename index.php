@@ -68,7 +68,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             <div class="nav">
                 <a href="logout.php">Cerrar Sesion</a> 
             </div>
-        
+           
         </div>  
         
         <!-- Contenidos de form -->
