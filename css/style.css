@@ -191,8 +191,8 @@ input[type="submit"]:hover {
 
 .tabs i {
   color: #2691d9;
-  /* margin: 1rem 0; */
-  font-size: 2rem;
+  margin-right: 2px;
+  font-size: 1.2rem;
   background: #F5F5F2;
 
 }

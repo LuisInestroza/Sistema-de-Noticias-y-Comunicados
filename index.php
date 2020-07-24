@@ -38,20 +38,32 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
    <div class="tabs">
        <div class="tabs-navegation">
            <div class="nav">
-               <!-- <i class="fas fa-newspaper"></i> -->
-               <button  onclick="changeTab('primero')">Noticias</button>
+               <!--  -->
+               <button  onclick="changeTab('primero')">
+                    <i class="fas fa-newspaper"></i>
+                    Noticias
+                </button>
            </div>
            <div class="nav">
-               <!-- <i class="fas fa-list-alt"></i> -->
-               <button  onclick="changeTab('segundo')">Listar Noticias</button>
+               <!--  -->
+               <button  onclick="changeTab('segundo')">
+                    <i class="fas fa-list-alt"></i>
+                    Listar Noticias
+                </button>
            </div>
            <div class="nav">  
-               <!-- <i class="fas fa-file-alt"></i>   -->
-               <button  onclick="changeTab('tercero')">Comunicados</button>
+               <!--   -->
+               <button  onclick="changeTab('tercero')">
+                    <i class="fas fa-file-alt"></i> 
+                    Comunicados
+                </button>
            </div>
            <div class="nav">
-                <!-- <i class="fas fa-list-alt"></i> -->
-                <button  onclick="changeTab('cuarto')">Listar Comunicados</button>
+                <!--  -->
+                <button  onclick="changeTab('cuarto')">
+                    <i class="fas fa-list-alt"></i>
+                    Listar Comunicados
+                </button>
            </div>
             <div class="nav">
                 <a href="logout.php">Cerrar Sesion</a> 
