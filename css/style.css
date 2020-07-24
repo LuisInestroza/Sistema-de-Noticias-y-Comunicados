@@ -8,7 +8,27 @@ body h1 {
   margin: 0;
 }
 
+.tables .fa-edit {
+  color: #eb6e1b;
+  font-size: 1.5rem;
+  background: none;
+}
 
+.tables .fa-trash {
+  color: #c80045;
+  font-size: 1.5rem;
+  background: none;
+}
+
+.tables .fa-edit:hover {
+  color: #f38f4c;
+
+}
+
+.tables .fa-trash:hover {
+  color: #ca386b;
+
+}
 
 .alertas {
   text-align: center;
