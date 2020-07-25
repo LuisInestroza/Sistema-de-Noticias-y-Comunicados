@@ -24,7 +24,7 @@ $sql ="SELECT * FROM comunicado WHERE usuario_idUsuario = '$idUsuario'";
             <td><?php echo "<img src = 'data:image/;base64,".base64_encode($filas['imagen'])."' />";; ?></td>
             <td><?php echo $filas["fechaComunicado"]; ?></td>
             <td>
-                <a href=""><i class="fas fa-edit"></i></a>
+                <a href="/view/editarComunicado.php?id=<?php echo $filas["idComunicado"];?>"><i class="fas fa-edit"></i></a>
                 <a href=""><i class="fas fa-trash"></i></a>
             </td>
         </tr>

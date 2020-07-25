@@ -8,6 +8,7 @@ body h1 {
   margin: 0;
 }
 
+/* Estilo de listar los elementos */
 .tables .fa-edit {
   color: #eb6e1b;
   font-size: 1.5rem;
@@ -405,4 +406,22 @@ form .panel {
 
 }
 
-/* Estilo de listar los elementos */
+/* Estilo de editar comunicados */
+
+.imagen img {
+  height: 400px;
+  width: 340px;
+  margin: 0 auto;
+}
+
+.form-editarComunicado {
+  width: 30%;
+  left: 15%;
+
+}
+
+.editarComunicado .imagen {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+}
