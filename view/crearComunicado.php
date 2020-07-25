@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $resultadoQuery = mysqli_query($conexion, $query);
             if ($resultadoQuery === true) {
-                header("Location: index.php");
+                // header("Location: ../index.php");
             } else {
                 $Error ="error en la consulta";
             }

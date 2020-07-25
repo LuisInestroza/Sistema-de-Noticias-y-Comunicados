@@ -25,11 +25,11 @@ $sql ="SELECT * FROM comunicado WHERE usuario_idUsuario = '$idUsuario'";
             <td><?php echo $filas["fechaComunicado"]; ?></td>
             <td>
                 <a href="/view/editarComunicado.php?id=<?php echo $filas["idComunicado"];?>"><i class="fas fa-edit"></i></a>
-                <a href=""><i class="fas fa-trash"></i></a>
+                <a href="/view/eliminarComunicado.php?id=<?php echo $filas["idComunicado"];?>"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
         <?php endwhile; ?>
-        <?php endif;  mysqli_close($conexion);?>
+        <?php endif;  ?>
        
 </table>
  

@@ -80,13 +80,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <!-- Contenidos de form -->
         <div class="tabs-content">
             <!-- Crear Noticias -->
-            <?php  include "view/crearNoticia.php"; ?>
+            <?php  require_once "view/crearNoticia.php"; ?>
             <!-- Listar Noticias -->
-            <?php  include "view/listarNoticia.php"; ?>
+            <?php  require_once "view/listarNoticia.php"; ?>
             <!-- Crear Comunicados -->
-            <?php  include "view/crearComunicado.php"; ?>
+            <?php require_once "view/crearComunicado.php"; ?>
             <!-- Listar Comunicados -->
-           <?php  include "view/listarComunicados.php"; ?>
+           <?php  require_once "view/listarComunicados.php"; ?>
         </div>
     </div>
 </body>
