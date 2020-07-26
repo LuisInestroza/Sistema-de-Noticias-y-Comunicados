@@ -57,7 +57,10 @@
            </div>
            
             <div class="nav">
-                <a href="../logout.php">Cerrar Sesion</a> 
+                <a href="../logout.php">
+                    <i class="fas fa-sign-out-alt"></i> 
+                    Cerrar Sesion
+                </a> 
             </div>
              <!-- <div class="nav">
                 <p>

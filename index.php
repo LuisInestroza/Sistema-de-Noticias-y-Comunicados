@@ -36,23 +36,30 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
    <!-- Panel de acciones -->
    <div class="tabs">
-       <div class="navegation">
-            <div class="nav-index">
+       <div class="tabs-navegation" style="padding-bottom: 41px;">
+            <!-- <div class="nav">
                 <p>
                     Bienvenido(a), <br>
-                    <p><?php echo $_SESSION['nombre']; ?></p>
+                    <p style="margin-top: 0px;  text-transform: uppercase;">
+                        <?php //echo $_SESSION['nombre'];?>
+                    </p>
                 </p>
-            </div>
-            <div class="nav-index">
-                <i class="fas fa-sign-out-alt"></i> 
-                <a href="logout.php">Cerrar Sesion</a> 
+            </div> -->
+            <div class="nav" style="position: absolute; right:0;">
+                <a href="logout.php">
+                    <i class="fas fa-sign-out-alt"></i> 
+                    Cerrar Sesion
+                </a> 
             </div>
             
         
         </div>  
-        
+        <div class="init">   
+            <h3>Bienvenido(a),</h3>
+            <h2><?php echo $_SESSION["nombre"]; ?></h2>
+        </div>
         <!-- Contenidos de form -->
-        <div class="tabs-content" style="margin: 50px auto;">
+        <div class="tabs-content" style="margin: 50px auto; margin-top: 0px;">
             <!-- Crear Noticias -->
             <a href="/view/crearNoticia.php">
                 <i class="fas fa-newspaper"></i> <br>

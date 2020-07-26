@@ -211,61 +211,23 @@ input[type="submit"]:hover {
 
 /* Diseño  del menú principal */
 
-.navegation {
-  border-bottom: 1px solid #e0e0e0;
-  display: flex;
+.nav:nth-child(1)>p:nth-child(1) {
+  margin-top: 0px;
+  margin-right: 0px;
 }
 
-.navegation .nav-index {
-  color: #000000;
-  border: none;
-  padding: 20px;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  outline: none;
-  font-weight: bold;
+.init {
+  margin-top: 30px;
+  text-align: center;
 }
 
-.nav-index:nth-child(1) {
-  padding-bottom: 0px;
-  padding-top: 18px;
-  font-size: 20px;
-}
-
-.nav-index:nth-child(2) {
-  padding-top: 30px;
-}
-
-.navegation .nav-index:nth-child(2):hover {
-  background: #f5f5f5;
-  cursor: pointer;
-}
-
-.navegation .nav-index p {
+.init h3 {
   margin: 0;
 }
 
-.navegation .nav-index .fas {
-  background: none;
-}
-
-.nav-index:nth-child(1) p:nth-child(2) {
+.init h2 {
+  margin: 0;
   text-transform: uppercase;
-  margin-top: 5px;
-}
-
-.navegation .nav-index a {
-  margin-top: 15px;
-  text-decoration: none;
-  color: #2691d9;
-}
-
-.navegation .nav-index:nth-child(2) {
-  text-align: center;
-  background: none;
-  position: absolute;
-  right: 0;
 }
 
 .tabs {
@@ -293,7 +255,7 @@ input[type="submit"]:hover {
 }
 
 .tabs-navegation p {
-  float: right;
+
   margin: 0;
   padding: 0;
   color: #2691d9;
@@ -313,7 +275,12 @@ input[type="submit"]:hover {
 
 }
 
+.tabs-navegation .fas {
+  background: none;
+}
+
 .tabs-navegation a {
+
   color: #2691d9;
   border: none;
   padding: 20px;
