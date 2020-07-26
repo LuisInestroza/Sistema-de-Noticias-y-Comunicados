@@ -36,65 +36,41 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
    <!-- Panel de acciones -->
    <div class="tabs">
-       <div class="tabs-navegation">
-           <!-- <div class="nav">
-               <button  onclick="changeTab('primero')">
-                    <i class="fas fa-newspaper"></i>
-                    Noticias
-                </button>
-           </div>
-           <div class="nav">
-               <button  onclick="changeTab('segundo')">
-                    <i class="fas fa-list-alt"></i>
-                    Listar Noticias
-                </button>
-           </div>
-           <div class="nav">  
-               <button  onclick="changeTab('tercero')">
-                    <i class="fas fa-file-alt"></i> 
-                    Comunicados
-                </button>
-           </div>
-           <div class="nav">
-                <button  onclick="changeTab('cuarto')">
-                    <i class="fas fa-list-alt"></i>
-                    Listar Comunicados
-                </button>
-           </div> -->
-            <div class="nav">
+       <div class="navegation">
+            <div class="nav-index">
                 <p>
-                    Bienvenido(a) <br>
-                    <?php echo $_SESSION['nombre']; ?>
+                    Bienvenido(a), <br>
+                    <p><?php echo $_SESSION['nombre']; ?></p>
                 </p>
             </div>
-            <div class="nav">
+            <div class="nav-index">
+                <i class="fas fa-sign-out-alt"></i> 
                 <a href="logout.php">Cerrar Sesion</a> 
             </div>
             
-           
-           
+        
         </div>  
         
         <!-- Contenidos de form -->
-        <div class="tabs-content">
+        <div class="tabs-content" style="margin: 50px auto;">
             <!-- Crear Noticias -->
             <a href="/view/crearNoticia.php">
-                <i class="fas fa-list-alt"></i>
+                <i class="fas fa-newspaper"></i> <br>
                 Noticias
             </a>
             <!-- Listar Noticias -->
            <a href="/view/listarNoticia.php">
-                <i class="fas fa-list-alt"></i>
+                <i class="fas fa-list-alt"></i> <br>
                 Listar Noticias
             </a>
             <!-- Crear Comunicados -->
             <a href="/view/crearComunicado.php">
-                <i class="fas fa-file-alt"></i> 
+                <i class="fas fa-file-alt"></i> <br>
                 Comunicados
             </a>
             <!-- Listar Comunicados -->
             <a href="/view/listarComunicados.php">
-                <i class="fas fa-list-alt"></i>
+                <i class="fas fa-list-alt"></i> <br>
                 Listar Comunicados
             </a>
            
