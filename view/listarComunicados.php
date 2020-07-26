@@ -5,6 +5,8 @@ require_once "./config/db.php";
 $idUsuario = $_SESSION["idUsuario"];
 $sql ="SELECT * FROM comunicado WHERE usuario_idUsuario = '$idUsuario'";
 
+$resultado = mysqli_query($conexion, $sql);
+
 
 ?>
 
@@ -17,7 +19,7 @@ $sql ="SELECT * FROM comunicado WHERE usuario_idUsuario = '$idUsuario'";
             <th>Acciones</th>
         </tr>
 
-        <?php  if ($resultado = mysqli_query($conexion, $sql)):?>
+
         <?php while ($filas = mysqli_fetch_assoc($resultado)): ?>
         <tr>
             <td><?php echo $filas["codigoComunicado"]; ?></td>
@@ -29,7 +31,6 @@ $sql ="SELECT * FROM comunicado WHERE usuario_idUsuario = '$idUsuario'";
             </td>
         </tr>
         <?php endwhile; ?>
-        <?php endif;  ?>
        
 </table>
  
