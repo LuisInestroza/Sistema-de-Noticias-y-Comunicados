@@ -37,56 +37,67 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
    <!-- Panel de acciones -->
    <div class="tabs">
        <div class="tabs-navegation">
-           <div class="nav">
-               <!--  -->
+           <!-- <div class="nav">
                <button  onclick="changeTab('primero')">
                     <i class="fas fa-newspaper"></i>
                     Noticias
                 </button>
            </div>
            <div class="nav">
-               <!--  -->
                <button  onclick="changeTab('segundo')">
                     <i class="fas fa-list-alt"></i>
                     Listar Noticias
                 </button>
            </div>
            <div class="nav">  
-               <!--   -->
                <button  onclick="changeTab('tercero')">
                     <i class="fas fa-file-alt"></i> 
                     Comunicados
                 </button>
            </div>
            <div class="nav">
-                <!--  -->
                 <button  onclick="changeTab('cuarto')">
                     <i class="fas fa-list-alt"></i>
                     Listar Comunicados
                 </button>
-           </div>
-            <div class="nav">
-                <a href="logout.php">Cerrar Sesion</a> 
-            </div>
+           </div> -->
             <div class="nav">
                 <p>
                     Bienvenido(a) <br>
                     <?php echo $_SESSION['nombre']; ?>
                 </p>
             </div>
+            <div class="nav">
+                <a href="logout.php">Cerrar Sesion</a> 
+            </div>
+            
+           
            
         </div>  
         
         <!-- Contenidos de form -->
         <div class="tabs-content">
             <!-- Crear Noticias -->
-            <?php  include "view/crearNoticia.php"; ?>
+            <a href="/view/crearNoticia.php">
+                <i class="fas fa-list-alt"></i>
+                Noticias
+            </a>
             <!-- Listar Noticias -->
-            <?php  include "view/listarNoticia.php"; ?>
+           <a href="/view/listarNoticia.php">
+                <i class="fas fa-list-alt"></i>
+                Listar Noticias
+            </a>
             <!-- Crear Comunicados -->
-            <?php include "view/crearComunicado.php"; ?>
+            <a href="/view/crearComunicado.php">
+                <i class="fas fa-file-alt"></i> 
+                Comunicados
+            </a>
             <!-- Listar Comunicados -->
-           <?php  include "view/listarComunicados.php"; ?>
+            <a href="/view/listarComunicados.php">
+                <i class="fas fa-list-alt"></i>
+                Listar Comunicados
+            </a>
+           
         </div>
     </div>
 </body>

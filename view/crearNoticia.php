@@ -1,7 +1,12 @@
 <?php
-
+session_start();
+// Verifica rque isuario este logueado
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("Location: login.php");
+    exit;
+}
 // Incluir el script de la coenexion a la base de datos
-require_once "./config/db.php";
+require_once "../config/db.php";
 //Incluir el id del usuario loguedo
 $idUsuario = $_SESSION["idUsuario"];
 //Query para listar las categoria de noticias
@@ -12,7 +17,8 @@ $categoriaNoticia = mysqli_query($conexion, $listarCategoriaComunicado);
 
 //Funcionalidad  de crear la noticia
 //Declarar variables
-$tituloNoticia = $descripcionNoticia = $categoriasNoticia = "";
+$tituloNoticia = $descripcionNoticia  = "";
+$categoriasNoticia = 0;
 $error = "";
 // Verificar que se realice el metodo post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -36,11 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Si no hay errores
     if (empty($error)) {
         $queryNoticia = "INSERT INTO `noticia`(`fechaNoticia`, `tituloNoticia`, `descripcionNoticia`, `categoriaNoticia_idcategoriaNoticia`, `usuario_idUsuario`)
-                                 VALUES (CURDATE(), '$tituloNoticia', '$descripcionNoticia', '$categoriasNoticia', '$idUsuario')";
+                                 VALUES (CURDATE(), '$tituloNoticia', '$descripcionNoticia', '".$_POST['categoriaNoticia']."', '$idUsuario')";
     
         $insertarNoticia = mysqli_query($conexion, $queryNoticia);
         if ($insertarNoticia === true) {
-            header("Location: index.php");
         } else {
             $error = "Noticia no registrada";
         }
@@ -48,7 +53,82 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_close($conexion);
 }
 ?>
-<div class="alertas">
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../logo.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <title>Crear Noticia - Municipalidad de Siguatepeque</title>
+</head>
+<body>
+    <!-- Cabecera -->
+    <div class="logo">
+        <img src="../img/logo.png" alt="" srcset="">
+    </div>
+    <div class="escudo">
+        <img src="../img/escudo.png" alt="" srcset="">
+    </div>
+    
+   <div class="cabecera">
+        <h1>Sistema de Registro de Noticias y Comunicados</h1>
+   </div>
+    <!-- Panel de acciones -->
+   <div class="tabs">
+       <div class="tabs-navegation">
+           <div class="nav">
+               <a href="../index.php">
+                   <i class="fas fa-home"></i>
+                   Home
+                </a>
+           </div>
+           <div class="nav">
+               <a href="/view/crearNoticia.php">
+                    <i class="fas fa-newspaper"></i>
+                    Noticias
+                </a>
+           </div>
+           <div class="nav">
+               <a href="/view/listarNoticia.php">
+                    <i class="fas fa-list-alt"></i>
+                    Listar Noticias
+                </a>
+           </div>
+           <div class="nav">  
+               <a href="/view/crearComunicado.php">
+                    <i class="fas fa-file-alt"></i> 
+                    Comunicados
+                </a>
+           </div>
+           <div class="nav">
+                <a href="/view/listarComunicados.php">
+                    <i class="fas fa-list-alt"></i>
+                    Listar Comunicados
+                </a>
+           </div>
+           
+            <div class="nav">
+                <a href="../logout.php">Cerrar Sesion</a> 
+            </div>
+             <!-- <div class="nav">
+                <p>
+                    Bienvenido(a) <br>
+                    <?php //echo $_SESSION['nombre'];?>
+                </p>
+            </div> -->
+            
+
+           
+        </div>  
+    </div>
+    <div class="alertas">
     <?php  echo "<p>$error</p>" ;?>
 </div>
 <div id="primero" class="single-tab" >
@@ -94,3 +174,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>         
 </div>
+    
+</body>
+</html>

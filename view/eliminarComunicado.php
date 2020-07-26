@@ -7,6 +7,6 @@ if (isset($_GET["id"])) {
     $sql = "DELETE FROM comunicado WHERE idComunicado = '$idComunicado'";
     $resultado = mysqli_query($conexion, $sql);
     if ($resultado === true) {
-        header("Location: ../index.php");
+        header("Location: /view/listarComunicados.php");
     }
 }
