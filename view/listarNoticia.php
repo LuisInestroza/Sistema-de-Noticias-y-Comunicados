@@ -1,3 +1,21 @@
+<?php
+session_start();
+// Verifica rque isuario este logueado
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("Location: login.php");
+    exit;
+}
+require_once "../config/db.php";
+
+// Declarar variables
+$idUsuario = $_SESSION["idUsuario"];
+$sql ="SELECT * FROM noticia WHERE usuario_idUsuario = '$idUsuario'";
+
+$resultado = mysqli_query($conexion, $sql);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -74,6 +92,28 @@
         </div>  
     </div>
     <div id="segundo" class="single-tab" >
+        <table class ="tables">
+        <tr>
+            <th>Titulo</th>
+            <th>Imagen</th>
+            <th>Fecha de publicación</th>
+            <th>Acciones</th>
+        </tr>
+
+
+        <?php while ($filas = mysqli_fetch_assoc($resultado)): ?>
+        <tr>
+            <td><?php echo $filas["tituloNoticia"]; ?></td>
+            <td><?php //echo "<img src = 'data:image/;base64,".base64_encode($filas['imagen'])."' />";;?></td>
+            <td><?php echo $filas["fechaNoticia"]; ?></td>
+            <td>
+                <a href="/view/editarComunicado.php?id=<?php echo $filas["idNoticia"];?>"><i class="fas fa-edit"></i></a>
+                <a href="/view/eliminarNoticia.php?id=<?php echo $filas["idNoticia"];?>"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        <?php endwhile; ?>
+       
+</table>
             
     </div>
   
