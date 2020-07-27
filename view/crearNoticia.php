@@ -2,7 +2,7 @@
 session_start();
 // Verifica rque isuario este logueado
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 // Incluir el script de la coenexion a la base de datos
@@ -178,3 +178,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 </body>
 </html>
+<script src="../js/app.js"></script>

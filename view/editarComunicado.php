@@ -35,7 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // Si no hay  errores
     if (empty($error)) {
+        // Si el usuario hace click en actualizar
         if (isset($_POST['update']) == 1) {
+            // Si hay una foto que actualizar
             if (isset($_FILES["imagen"]["name"])&&($_FILES["imagen"]["name"] != "")) {
                 $typeImagen = $_FILES["imagen"]["tmp_name"];
                 $imagenUpdate = addslashes(file_get_contents($typeImagen));
@@ -49,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $error = "Error en la consulta";
                 }
             } else {
+                // Si no se actualiza una foto solo el codigo del comunicado
                 $updateComunicado = "UPDATE comunicado 
                                         SET codigoComunicado = '$codigoComunicadoUpdate'
                                     WHERE idComunicado = '$idUrl'";

@@ -2,7 +2,7 @@
 session_start();
 // Verifica rque isuario este logueado
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 require_once "../config/db.php";
