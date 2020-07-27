@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['update']) == 1) {
             $updateNoticia = "UPDATE noticia
                                     SET tituloNoticia = '$tituloNoticiaUpdate', descripcionNoticia ='$descripcionNoticiaUpdate', categoriaNoticia_idcategoriaNoticia = '$categoriaNoticiaUpdate'
-                                WHERE idNoticia = '$idUrl'";
+                              WHERE idNoticia = '$idUrl'";
             
             if (mysqli_query($conexion, $updateNoticia)) {
                 header("Location:  /view/listarNoticia.php");
@@ -101,7 +101,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>Editar Noticia</h2>
             <form action="" method="post" class="accion">
                 <div class="txt_field panel">
-                    <input type="text" name="tituloNoticia" id="" value = "<?php echo $tituloNoticiaUpdate;?>"required>  
+                    <input 
+                        type="text" 
+                        name="tituloNoticia" 
+                        id="" 
+                        value = "<?php echo $tituloNoticiaUpdate;?>"required>  
                     <span></span>
                     <label for="">Titulo de Noticia</label>
                 </div>
@@ -120,7 +124,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 </div>
                 <div class="txt_field panel">
-                    <textarea name="descripcionNoticia" id="" cols="30" rows="10" required><?php echo $descripcionNoticiaUpdate; ?></textarea>
+                    <textarea name="descripcionNoticia" id="" cols="30" rows="10" required>
+                        <?php echo $descripcionNoticiaUpdate; ?>
+                    </textarea>
                     <span class="span-descripcion"></span>
                     <label for="">Descripción de Noticia</label>
                     

@@ -49,7 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $error = "Error en la consulta";
                 }
             } else {
-                $error = "No hay imagen almacenada";
+                $updateComunicado = "UPDATE comunicado 
+                                        SET codigoComunicado = '$codigoComunicadoUpdate'
+                                    WHERE idComunicado = '$idUrl'";
+                
+                if (mysqli_query($conexion, $updateComunicado)) {
+                    header("Location:  /view/listarComunicados.php");
+                } else {
+                    $error = "Error en la consulta";
+                }
             }
         }
     }
@@ -103,14 +111,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         name="imagen" 
                         id="">  
                     <span></span>
-                </div>        
+                </div>    
+                <div class="imagen">
+                     <?php echo "<img src = 'data:image/;base64,".base64_encode($imagenComunicadoUpdate)."' />";; ?>
+                </div>    
                 <input type="hidden" name="update" id="id" value="<?php echo $idUrl; ?>">    
                 <input type="submit" value="Editar Comunicado">
             </form>
         </div>     
-        <div class="imagen">
-            <?php echo "<img src = 'data:image/jpeg;base64,".base64_encode($imagenComunicadoUpdate)."' />";; ?>
-        </div>
+     
     </div>
 
    

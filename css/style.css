@@ -466,6 +466,6 @@ form .panel {
 
 .editarComunicado .imagen {
   position: absolute;
-  top: 30%;
-  left: 50%;
+  top: -40px;
+  left: 110%;
 }
