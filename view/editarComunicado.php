@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     WHERE idComunicado = '$idUrl'";
                 
                 if (mysqli_query($conexion, $updateComunicado)) {
-                    header("Location: ../index.php");
+                    header("Location:  /view/listarComunicados.php");
                 } else {
                     $error = "Error en la consulta";
                 }
