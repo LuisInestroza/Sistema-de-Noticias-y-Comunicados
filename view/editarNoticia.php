@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                               WHERE idNoticia = '$idUrl'";
             
             if (mysqli_query($conexion, $updateNoticia)) {
-                header("Location:  /view/listarNoticia.php");
+                header("Location: /view/subirImagenesNoticia.php");
             } else {
                 $error = "Error en la consulta";
             }
@@ -120,32 +120,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php  endwhile;?>
                         <!-- Fin del ciclo while -->
                     </select>
-                    
-
                 </div>
                 <div class="txt_field panel">
-                    <textarea name="descripcionNoticia" id="" cols="30" rows="10" required>
-                        <?php echo $descripcionNoticiaUpdate; ?>
+                    <textarea name="descripcionNoticia" id="" cols="30" rows="10" required><?php echo $descripcionNoticiaUpdate; ?>
                     </textarea>
                     <span class="span-descripcion"></span>
                     <label for="">Descripción de Noticia</label>
-                    
                 </div>
                 
                 <input type="hidden" name="update" id="id" value="<?php echo $idUrl; ?>">    
                 <input type="submit" value="Editar Noticia">
+                
             </form>
         </div>
-        <div class="center form-imagen">
-            <h2>Subir Imagenes</h2>
-            <form action="" method="post" class="accion" enctype="multipart/form-data"> 
-                <div class="txt_field panel">
-                    <input type="file" name="" id="" required multiple>  
-                    <span></span>
-                </div>
-                <input type="submit" value="Subir Imagenes">
-            </form>
-        </div>         
+            
     </div>
 
 

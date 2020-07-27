@@ -379,7 +379,7 @@ form .panel {
   width: 42%;
   position: absolute;
   top: 26%;
-  left: 10%;
+  left: 27%;
   transform: tranlate(-50%, -50%);
   background: white;
   border-radius: 10px;
@@ -389,8 +389,8 @@ form .panel {
 
 .form-imagen {
   position: absolute;
-  top: 26%;
-  left: 55%;
+  top: 30%;
+  left: 35%;
   transform: tranlate(-50%, -50%);
   width: 400px;
   background: white;
@@ -468,4 +468,9 @@ form .panel {
   position: absolute;
   top: -40px;
   left: 110%;
+}
+
+
+.accion>input:nth-child(5) {
+  grid-column: -3/-1;
 }

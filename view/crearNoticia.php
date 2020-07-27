@@ -161,7 +161,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 
                 <input type="submit" value="Subir Noticia">
-                <a href="/view/subirImagenesNoticia.php">Subir Imagenes</a>
             </form>
         </div>
       

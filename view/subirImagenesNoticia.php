@@ -40,12 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Realizar la consulta a la base de datos
                     $resultado = mysqli_query($conexion, $query);
                     if (!$resultado) {
-                        echo  "Query no realizado";
+                        header("Location: /view/listarNoticia.php");
                     } else {
-                        echo "Query realizado correctamente";
+                        $error = "Imagenes no almacenadas";
                     }
                     // Redireccionar la pagina principal
-                    header("Location: /view/listarNoticia.php");
+                   
                 // Cerrar la conexion a la base de datos
                 } else {
                     $error =  "Solo formato png y jpeg";
@@ -130,9 +130,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="center form-imagen">
             <h2>Subir Imagenes</h2>
             <form action="" method="post" class="accion" enctype="multipart/form-data"> 
-                <div class="txt_field panel">
+                <div class="txt_field">
                     <select name="tituloNoticia" id="" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="" disabled selected>Selecciona la noticia</option>
                         <!-- Mostrar las categorias de noticia en la etiqueta SELECT -->
                         <?php while ($filas = mysqli_fetch_assoc($queryNoticias)):?>
                         <option value="<?php echo $filas["idNoticia"];?>"><?php echo $filas["tituloNoticia"];?></option>
@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
 
                 </div>
-                <div class="txt_field panel">
+                <div class="txt_field">
                     <input type="file" name="imagen[]" id="" required multiple>  
                     <span></span>
                 </div>
