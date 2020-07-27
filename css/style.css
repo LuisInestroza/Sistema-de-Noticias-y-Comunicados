@@ -375,6 +375,11 @@ form .panel {
   grid-column: 1/4;
 }
 
+div.txt_field:nth-child(4) {
+
+  grid-column: 1/4;
+}
+
 .form-noticia {
   width: 42%;
   position: absolute;
@@ -470,6 +475,13 @@ form .panel {
   left: 110%;
 }
 
+.center .imagen {
+
+  position: absolute;
+  top: -5px;
+  left: 110%;
+
+}
 
 .accion>input:nth-child(5) {
   grid-column: -3/-1;

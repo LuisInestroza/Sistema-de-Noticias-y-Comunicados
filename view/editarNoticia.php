@@ -27,6 +27,7 @@ if (isset($_GET["id"])) {
             $descripcionNoticiaUpdate = $noticia["descripcionNoticia"];
             $categoriaNoticiaUpdate = $noticia["categoriaNoticia_idcategoriaNoticia"];
             $nombreCategoria = $noticia["categoriaNoticia"];
+            $imagenNoticiaUpdate = $noticia["imagenNoticia"];
         }
     } else {
         $error = "Error en la consulta";
@@ -53,17 +54,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Si no hay  errores
     if (empty($error)) {
         if (isset($_POST['update']) == 1) {
-            $updateNoticia = "UPDATE noticia
+            if (isset($_FILES["imagenNoticia"]["name"])&&($_FILES["imagenNoticia"]["name"] != "")) {
+                $typeImagen = $_FILES["imagenNoticia"]["tmp_name"];
+                $imagenUpdate = addslashes(file_get_contents($typeImagen));
+                $updateNoticia = "UPDATE noticia
+                                    SET tituloNoticia = '$tituloNoticiaUpdate', 'imagenNoticia' = '$imagenUpdate', descripcionNoticia ='$descripcionNoticiaUpdate', categoriaNoticia_idcategoriaNoticia = '$categoriaNoticiaUpdate'
+                              WHERE idNoticia = '$idUrl'";
+                if (mysqli_query($conexion, $updateNoticia)) {
+                    header("Location: /view/listarNoticia.php");
+                } else {
+                    $error = "Error en la consulta";
+                }
+            } else {
+                $updateNoticia = "UPDATE noticia
                                     SET tituloNoticia = '$tituloNoticiaUpdate', descripcionNoticia ='$descripcionNoticiaUpdate', categoriaNoticia_idcategoriaNoticia = '$categoriaNoticiaUpdate'
                               WHERE idNoticia = '$idUrl'";
-            
-            if (mysqli_query($conexion, $updateNoticia)) {
-                header("Location: /view/subirImagenesNoticia.php");
-            } else {
-                $error = "Error en la consulta";
+                if (mysqli_query($conexion, $updateNoticia)) {
+                    header("Location: /view/listarNoticia.php");
+                } else {
+                    $error = "Error en la consulta";
+                }
             }
-        } else {
-            $error = "No hay imagen almacenada";
         }
     }
 }
@@ -97,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php  echo "<p>$error</p>" ;?> 
     </div>
     <div id="primero" class="single-tab" >
-        <div class="center form-noticia">
+        <div class="center" style=" width: 40%; top: 40px;  left: 15%;">
             <h2>Editar Noticia</h2>
             <form action="" method="post" class="accion">
                 <div class="txt_field panel">
@@ -121,6 +132,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <!-- Fin del ciclo while -->
                     </select>
                 </div>
+                <div class="txt_field">
+                    <input type="file" name="imagenNoticia" id="">  
+                    <span></span>
+                </div>
+                <div class="imagen">
+                     <?php echo "<img src = 'data:image/;base64,".base64_encode($imagenNoticiaUpdate)."' />";;?>
+                </div> 
                 <div class="txt_field panel">
                     <textarea name="descripcionNoticia" id="" cols="30" rows="10" required><?php echo $descripcionNoticiaUpdate; ?>
                     </textarea>

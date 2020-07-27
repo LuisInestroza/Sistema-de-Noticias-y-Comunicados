@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     VALUES ('$imagen', '$idNoticia')";
                     // Realizar la consulta a la base de datos
                     $resultado = mysqli_query($conexion, $query);
-                    if (!$resultado) {
+                    if ($resultado === true) {
                         header("Location: /view/listarNoticia.php");
                     } else {
                         $error = "Imagenes no almacenadas";

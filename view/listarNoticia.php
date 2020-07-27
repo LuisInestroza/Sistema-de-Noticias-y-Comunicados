@@ -104,7 +104,7 @@ $resultado = mysqli_query($conexion, $sql);
         <?php while ($filas = mysqli_fetch_assoc($resultado)): ?>
         <tr>
             <td><?php echo $filas["tituloNoticia"]; ?></td>
-            <td><?php //echo "<img src = 'data:image/;base64,".base64_encode($filas['imagen'])."' />";;?></td>
+            <td><?php echo "<img src = 'data:image/;base64,".base64_encode($filas['imagenNoticia'])."' />";;?></td>
             <td><?php echo $filas["fechaNoticia"]; ?></td>
             <td>
                 <a href="/view/editarNoticia.php?id=<?php echo $filas["idNoticia"];?>"><i class="fas fa-edit"></i></a>

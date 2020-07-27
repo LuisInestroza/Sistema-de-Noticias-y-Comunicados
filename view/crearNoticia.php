@@ -40,14 +40,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Si no hay errores
     if (empty($error)) {
-        $queryNoticia = "INSERT INTO `noticia`(`fechaNoticia`, `tituloNoticia`, `descripcionNoticia`, `categoriaNoticia_idcategoriaNoticia`, `usuario_idUsuario`)
-                                 VALUES (CURDATE(), '$tituloNoticia', '$descripcionNoticia', '".$_POST['categoriaNoticia']."', '$idUsuario')";
+
+        // Verificar que haya una imagen cargada
+        $imagenCheck = getimagesize($_FILES['imagenNoticia']['tmp_name']);
+        if (!$imagenCheck === false) {
+            $imagen = $_FILES['imagenNoticia']['tmp_name'];
+            $imagenSubir = addslashes(file_get_contents($imagen));
+            $queryNoticia = "INSERT INTO `noticia`(`fechaNoticia`, `imagenNoticia`, `tituloNoticia`, `descripcionNoticia`, `categoriaNoticia_idcategoriaNoticia`, `usuario_idUsuario`)
+                                 VALUES (CURDATE(),'$imagenSubir', '$tituloNoticia', '$descripcionNoticia', '".$_POST['categoriaNoticia']."', '$idUsuario')";
     
-        $insertarNoticia = mysqli_query($conexion, $queryNoticia);
-        if ($insertarNoticia === true) {
-            header("Location: /view/subirImagenesNoticia.php");
-        } else {
-            $error = "Noticia no registrada";
+            $insertarNoticia = mysqli_query($conexion, $queryNoticia);
+            if ($insertarNoticia === true) {
+                header("Location: /view/subirImagenesNoticia.php");
+            } else {
+                $error = "Noticia no registrada";
+            }
         }
     }
     mysqli_close($conexion);
@@ -120,12 +127,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Cerrar Sesion
                 </a> 
             </div>
-             <!-- <div class="nav">
-                <p>
-                    Bienvenido(a) <br>
-                    <?php //echo $_SESSION['nombre'];?>
-                </p>
-            </div> -->
         </div>  
     </div>
     <div class="alertas">
@@ -134,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id="primero" class="single-tab" >
         <div class="center form-noticia">
             <h2>Ingresar Noticia</h2>
-            <form action="" method="post" class="accion">
+            <form action="" method="post" class="accion" enctype="multipart/form-data">
                 <div class="txt_field panel">
                     <input type="text" name="tituloNoticia" id="" required>  
                     <span></span>
@@ -150,8 +151,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php  endwhile;?>
                         <!-- Fin del ciclo while -->
                     </select>
-                    
-
+                </div>
+                <div class="txt_field">
+                    <input type="file" name="imagenNoticia" id="" required>  
+                    <span></span>
                 </div>
                 <div class="txt_field panel">
                     <textarea name="descripcionNoticia" id="" cols="30" rows="10" required></textarea>
