@@ -5,56 +5,56 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: ../login.php");
     exit;
 }
-// Incluir el script de la coenexion a la base de datos
+// Incorporar la base de datos
 require_once "../config/db.php";
-//Incluir el id del usuario loguedo
-$idUsuario = $_SESSION["idUsuario"];
-//Query para listar las categoria de noticias
-$listarCategoriaComunicado = "SELECT * FROM categorianoticia";
-// Ejecutar la consula
-$categoriaNoticia = mysqli_query($conexion, $listarCategoriaComunicado);
+// Listar las noticias
+$listarNoticias = "SELECT * FROM noticia";
+// Ejecutar la consulta
+$queryNoticias = mysqli_query($conexion, $listarNoticias);
 
-//Funcionalidad  de crear la noticia
-//Declarar variables
-$tituloNoticia = $descripcionNoticia  = "";
-$categoriasNoticia = 0;
-$error = "";
-// Verificar que se realice el metodo post
+// Declarar variables
+$idNoticia = 0;
+$imagenes = $error = "";
+
+// Verificar que haga el metodo post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verificar que los campos no esten vacios
+    // Revisar que los campos no estan vacios
     if (empty(trim($_POST["tituloNoticia"]))) {
-        $error = "Ingrese el titulo de la noticia";
+        $error = "Debes seleccionar la noticia";
     } else {
-        $tituloNoticia = trim($_POST["tituloNoticia"]);
+        $idNoticia = trim($_POST["tituloNoticia"]);
     }
-    if (empty(trim($_POST["descripcionNoticia"]))) {
-        $error = "Ingrese la descripcion de la noticia";
-    } else {
-        $descripcionNoticia = trim($_POST["descripcionNoticia"]);
-    }
-    if (empty(trim($_POST["categoriaNoticia"]))) {
-        $error = "Ingrese la categoria de la noticia";
-    } else {
-        $categoriasNoticia = trim($_POST["categoriaNoticia"]);
-    }
-
+    
     // Si no hay errores
     if (empty($error)) {
-        $queryNoticia = "INSERT INTO `noticia`(`fechaNoticia`, `tituloNoticia`, `descripcionNoticia`, `categoriaNoticia_idcategoriaNoticia`, `usuario_idUsuario`)
-                                 VALUES (CURDATE(), '$tituloNoticia', '$descripcionNoticia', '".$_POST['categoriaNoticia']."', '$idUsuario')";
-    
-        $insertarNoticia = mysqli_query($conexion, $queryNoticia);
-        if ($insertarNoticia === true) {
-            header("Location: /view/subirImagenesNoticia.php");
-        } else {
-            $error = "Noticia no registrada";
+        if (isset($_FILES['imagen'])) {
+            $cantidad = count($_FILES["imagen"]["tmp_name"]);
+            for ($i=0; $i < $cantidad; $i++) {
+                if ($_FILES['imagen']['type'][$i]=='image/png' || $_FILES['imagen']['type'][$i]=='image/jpeg') {
+            
+                    //Subimos el fichero al servidor
+                    $imagen = addslashes(file_get_contents($_FILES["imagen"]["tmp_name"][$i], $_FILES["imagen"]["name"][$i]));
+
+                    $query = "INSERT INTO `detallenoticia`(`imagen`, `noticia_idNoticia`) 
+                                                    VALUES ('$imagen', '$idNoticia')";
+                    // Realizar la consulta a la base de datos
+                    $resultado = mysqli_query($conexion, $query);
+                    if (!$resultado) {
+                        echo  "Query no realizado";
+                    } else {
+                        echo "Query realizado correctamente";
+                    }
+                    // Redireccionar la pagina principal
+                    header("Location: /view/listarNoticia.php");
+                // Cerrar la conexion a la base de datos
+                } else {
+                    $error =  "Solo formato png y jpeg";
+                }
+            }
         }
     }
-    mysqli_close($conexion);
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
-    <title>Crear Noticia - Municipalidad de Siguatepeque</title>
+    <title>Subir Imagenes - Municipalidad de Siguatepeque</title>
 </head>
 <body>
     <!-- Cabecera -->
@@ -120,33 +120,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Cerrar Sesion
                 </a> 
             </div>
-             <!-- <div class="nav">
-                <p>
-                    Bienvenido(a) <br>
-                    <?php //echo $_SESSION['nombre'];?>
-                </p>
-            </div> -->
+          
         </div>  
     </div>
     <div class="alertas">
-        <?php  echo "<p>$error</p>" ;?>
+        <?php  //echo "<p>$error</p>" ;?>
     </div>
     <div id="primero" class="single-tab" >
-        <div class="center form-noticia">
-            <h2>Ingresar Noticia</h2>
-            <form action="" method="post" class="accion">
+        <div class="center form-imagen">
+            <h2>Subir Imagenes</h2>
+            <form action="" method="post" class="accion" enctype="multipart/form-data"> 
                 <div class="txt_field panel">
-                    <input type="text" name="tituloNoticia" id="" required>  
-                    <span></span>
-                    <label for="">Titulo de Noticia</label>
-                </div>
-                
-                <div class="txt_field panel">
-                    <select name="categoriaNoticia" id="" required>
+                    <select name="tituloNoticia" id="" required>
                         <option value="" disabled selected>Selecciona una opción</option>
                         <!-- Mostrar las categorias de noticia en la etiqueta SELECT -->
-                        <?php while ($filas = mysqli_fetch_assoc($categoriaNoticia)):?>
-                        <option value="<?php echo $filas["idCategoriaNoticia"]; ?>"><?php echo $filas["categoriaNoticia"];?></option>
+                        <?php while ($filas = mysqli_fetch_assoc($queryNoticias)):?>
+                        <option value="<?php echo $filas["idNoticia"];?>"><?php echo $filas["tituloNoticia"];?></option>
                         <?php  endwhile;?>
                         <!-- Fin del ciclo while -->
                     </select>
@@ -154,17 +143,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 </div>
                 <div class="txt_field panel">
-                    <textarea name="descripcionNoticia" id="" cols="30" rows="10" required></textarea>
-                    <span class="span-descripcion"></span>
-                    <label for="">Descripción de Noticia</label>
-                    
+                    <input type="file" name="imagen[]" id="" required multiple>  
+                    <span></span>
                 </div>
-                
-                <input type="submit" value="Subir Noticia">
-                <a href="/view/subirImagenesNoticia.php">Subir Imagenes</a>
+                <input type="submit" value="Subir Imagenes">
             </form>
-        </div>
-      
+        </div>    
+
+            
+          
+     
     </div>
     
 </body>
