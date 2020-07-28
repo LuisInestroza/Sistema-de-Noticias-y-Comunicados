@@ -1,16 +1,3 @@
-// Funcion para cambiar cada tab
-function changeTab(tab) {
-  // Declaración de variables
-  var i; // Contador
-  var change = document.getElementsByClassName("single-tab"); // Obtener el div a mostrar
-  //Ciclo que se encarga de hacer los cambios
-  for (i = 0; i < change.length; i++) {
-    change[i].style.display = "none";
-  }
-  document.getElementById(tab).style.display = "block";
-}
-
-
 // Mostrar alertas del incio de sesion
 document.addEventListener("DOMContentLoaded", () => {
   // Limpiar las alertas

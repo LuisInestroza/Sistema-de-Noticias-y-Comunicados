@@ -26,6 +26,9 @@ $resultado = mysqli_query($conexion, $sql);
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Listar Noticia - Municipalidad de Siguatepeque</title>
 </head>
 <body>
@@ -80,44 +83,31 @@ $resultado = mysqli_query($conexion, $sql);
                     Cerrar Sesion
                 </a> 
             </div>
-             <!-- <div class="nav">
-                <p>
-                    Bienvenido(a) <br>
-                    <?php //echo $_SESSION['nombre'];?>
-                </p>
-            </div> -->
-            
-
-           
         </div>  
     </div>
     <div id="segundo" class="single-tab" >
         <table class ="tables">
-        <tr>
-            <th>Titulo</th>
-            <th>Imagen</th>
-            <th>Fecha de publicación</th>
-            <th>Acciones</th>
-        </tr>
+            <tr>
+                <th>Titulo</th>
+                <th>Imagen</th>
+                <th>Fecha de publicación</th>
+                <th>Acciones</th>
+            </tr>
 
 
-        <?php while ($filas = mysqli_fetch_assoc($resultado)): ?>
-        <tr>
-            <td><?php echo $filas["tituloNoticia"]; ?></td>
-            <td><?php echo "<img src = 'data:image/;base64,".base64_encode($filas['imagenNoticia'])."' />";;?></td>
-            <td><?php echo $filas["fechaNoticia"]; ?></td>
-            <td>
-                <a href="/view/editarNoticia.php?id=<?php echo $filas["idNoticia"];?>"><i class="fas fa-edit"></i></a>
-                <a href="/view/eliminarNoticia.php?id=<?php echo $filas["idNoticia"];?>"><i class="fas fa-trash"></i></a>
-            </td>
-        </tr>
-        <?php endwhile; ?>
-       
-</table>
-            
-    </div>
-  
-
-    
+            <?php while ($filas = mysqli_fetch_assoc($resultado)): ?>
+            <tr>
+                <td><?php echo $filas["tituloNoticia"]; ?></td>
+                <td><?php echo "<img src = 'data:image/;base64,".base64_encode($filas['imagenNoticia'])."' />";;?></td>
+                <td><?php echo $filas["fechaNoticia"]; ?></td>
+                <td>
+                    <a href="/view/editarNoticia.php?id=<?php echo $filas["idNoticia"];?>"><i class="fas fa-edit"></i></a>
+                    <a href="/view/eliminarNoticia.php?id=<?php echo $filas["idNoticia"];?>"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+                
+        </table>
+    </div>    
 </body>
 </html>

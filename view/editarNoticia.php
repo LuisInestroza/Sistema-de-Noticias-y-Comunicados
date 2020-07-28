@@ -140,8 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      <?php echo "<img src = 'data:image/;base64,".base64_encode($imagenNoticiaUpdate)."' />";;?>
                 </div> 
                 <div class="txt_field panel">
-                    <textarea name="descripcionNoticia" id="" cols="30" rows="10" required><?php echo $descripcionNoticiaUpdate; ?>
-                    </textarea>
+                    <textarea name="descripcionNoticia" id="" cols="30" rows="10" required><?php echo $descripcionNoticiaUpdate; ?></textarea>
                     <span class="span-descripcion"></span>
                     <label for="">Descripción de Noticia</label>
                 </div>

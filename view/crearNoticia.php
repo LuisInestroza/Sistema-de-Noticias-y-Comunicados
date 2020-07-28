@@ -133,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php  echo "<p>$error</p>" ;?>
     </div>
     <div id="primero" class="single-tab" >
-        <div class="center form-noticia">
+        <div class="center form-noticia" >
             <h2>Ingresar Noticia</h2>
             <form action="" method="post" class="accion" enctype="multipart/form-data">
                 <div class="txt_field panel">

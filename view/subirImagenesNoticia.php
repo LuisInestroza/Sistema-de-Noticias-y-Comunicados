@@ -51,6 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $error =  "Solo formato png y jpeg";
                 }
             }
+        } else {
+            $error ="No hay imagen ingresada";
         }
     }
 }
