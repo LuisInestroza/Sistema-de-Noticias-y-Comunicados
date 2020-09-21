@@ -6,10 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (alertas) {
     limpiarAlertas(alertas);
   }
-
 });
 
-const limpiarAlertas = alertas => {
+const limpiarAlertas = (alertas) => {
   // Verificar si el div alertas tiene hijos
   const interval = setInterval(() => {
     if (alertas.children.length > 0) {

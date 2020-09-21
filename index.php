@@ -37,22 +37,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
    <!-- Panel de acciones -->
    <div class="tabs">
        <div class="tabs-navegation" style="padding-bottom: 41px;">
-            <!-- <div class="nav">
-                <p>
-                    Bienvenido(a), <br>
-                    <p style="margin-top: 0px;  text-transform: uppercase;">
-                        <?php //echo $_SESSION['nombre'];?>
-                    </p>
-                </p>
-            </div> -->
             <div class="nav" style="position: absolute; right:0;">
                 <a href="logout.php">
                     <i class="fas fa-sign-out-alt"></i> 
                     Cerrar Sesion
                 </a> 
             </div>
-            
-        
         </div>  
         <div class="init">   
             <h3>Bienvenido(a),</h3>

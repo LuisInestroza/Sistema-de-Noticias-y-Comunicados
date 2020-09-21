@@ -111,15 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Cerrar Sesion
                 </a> 
             </div>
-             <!-- <div class="nav">
-                <p>
-                    Bienvenido(a) <br>
-                    <?php //echo $_SESSION['nombre'];?>
-                </p>
-            </div> -->
-            
-
-           
+    
         </div>  
     </div>
     <div class="alertas">
