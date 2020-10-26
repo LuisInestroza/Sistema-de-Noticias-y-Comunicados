@@ -90,33 +90,40 @@ $resultado = mysqli_query($conexion, $sql);
     </div>
    
     <div id="cuarto" class="single-tab" >
-    <table class ="tables">
-        <tr>
-            <th>Codigo Comunicado</th>
-            <th>Imagen</th>
-            <th>Fecha de publicación</th>
-            <th>Acciones</th>
-        </tr>
+        <table class ="tables">
+            <tr>
+                <th>Codigo Comunicado</th>
+                <th>Imagen</th>
+                <th>Fecha de publicación</th>
+                <th>Acciones</th>
+            </tr>
 
 
-        <?php while ($filas = mysqli_fetch_assoc($resultado)): ?>
-        <tr>
-            <td><?php echo $filas["codigoComunicado"]; ?></td>
-            <td><?php echo "<img src = 'data:image/;base64,".base64_encode($filas['imagen'])."' />";; ?></td>
-            <td><?php echo $filas["fechaComunicado"]; ?></td>
-            <td>
-                <a href="/view/editarComunicado.php?id=<?php echo $filas["idComunicado"];?>"><i class="fas fa-edit"></i></a>
-                <a href="/view/eliminarComunicado.php?id=<?php echo $filas["idComunicado"];?>"><i class="fas fa-trash"></i></a>
-            </td>
-        </tr>
-        <?php endwhile; ?>
-       
-</table>
- 
-</div>
-
-    
+            <?php while ($filas = mysqli_fetch_assoc($resultado)): ?>
+            <tr>
+                <td><?php echo $filas["codigoComunicado"]; ?></td>
+                <td><?php echo "<img src = 'data:image/;base64,".base64_encode($filas['imagen'])."' />";; ?></td>
+                <td><?php echo $filas["fechaComunicado"]; ?></td>
+                <td class="acciones">
+                    <a href="/view/editarComunicado.php?id=<?php echo $filas["idComunicado"];?>"><i class="fas fa-edit"></i></a>
+                    <a href="/view/eliminarComunicado.php?id=<?php echo $filas["idComunicado"];?>" class="btn-deleteComunicado"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        
+        </table>
+        <!-- Mostar las alertas del SweetAlert -->
+        
+        <?php if(isset($_GET['e'])):?>
+            <div class="flash-dataComunicado" id="flash-data" data-flashdatacomunicado ="<?= $_GET['e']; ?>"></div>
+        <?php endif; ?>
+    </div>
 </body>
+<script src="../js/jquery-3.5.1.min.js"></script>
+<script src="../js/sweetalert2.all.min.js"></script>
+<script src="../js/deleteComunicado.js"></script>
+<?php include("../include/sweetalert.php"); ?>
+
 </html>
 
 

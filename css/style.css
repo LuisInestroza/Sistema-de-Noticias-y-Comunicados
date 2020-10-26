@@ -44,6 +44,10 @@ body h1 {
 
 }
 
+.tables .acciones{
+  text-align: center;
+}
+
 .alertas {
   text-align: center;
   position: fixed;

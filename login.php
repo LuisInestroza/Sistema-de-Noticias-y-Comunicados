@@ -61,11 +61,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             // Redireccionar a la pagina
                             header("Location: index.php");
                         } else {
-                            $Error = "La contraseña no es correcta";
+                            $_SESSION['status'] = "La contraseña no es correcta";
+                            $_SESSION['status_icon'] = "error";
+                           
+                            
                         }
                     }
                 } else {
-                    $Error = "El usuario no existe";
+                    $_SESSION['status'] = "El usuario no existe";
+                    $_SESSION['status_icon'] = "error";
+              
                 }
             } else {
                 echo "Algo salio mal";
@@ -89,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Iniciar Sesión - Municipalidad de Siguatepeque</title>
     <link rel="shortcut icon" href="./logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div class="logo">
@@ -128,4 +133,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    </div>
 </body>
 <script src="./js/app.js"></script>
+<script src="./js/sweetalert2.all.min.js"></script>
+<?php include("./include/sweetalert.php"); ?>
 </html>

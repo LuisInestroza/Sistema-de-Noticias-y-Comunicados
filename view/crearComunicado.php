@@ -35,6 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $resultadoQuery = mysqli_query($conexion, $query);
             if ($resultadoQuery === true) {
+                session_start();
+                $_SESSION['status'] = "Comunicado Creado";
+                $_SESSION['status_icon'] = "success";
                 header("Location: /view/listarComunicados.php");
             } else {
                 $Error ="error en la consulta";
@@ -141,5 +144,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
 </body>
+
+
+
 </html>
 

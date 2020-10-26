@@ -46,6 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     WHERE idComunicado = '$idUrl'";
                 
                 if (mysqli_query($conexion, $updateComunicado)) {
+                    session_start();
+                    $_SESSION['status'] = "El comunicado ha sido actualizado";
+                    $_SESSION['status_icon'] = "success";
                     header("Location:  /view/listarComunicados.php");
                 } else {
                     $error = "Error en la consulta";
@@ -57,6 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     WHERE idComunicado = '$idUrl'";
                 
                 if (mysqli_query($conexion, $updateComunicado)) {
+                    session_start();
+                    $_SESSION['status'] = "El comunicado ha sido actualizado";
+                    $_SESSION['status_icon'] = "success";
                     header("Location:  /view/listarComunicados.php");
                 } else {
                     $error = "Error en la consulta";

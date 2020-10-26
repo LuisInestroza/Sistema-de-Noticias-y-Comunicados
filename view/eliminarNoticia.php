@@ -10,6 +10,6 @@ if (isset($_GET["id"])) {
     $resultado = mysqli_query($conexion, $sql);
     
     if ($resultado === true) {
-        header("Location: /view/listarNoticia.php");
+        header("Location: /view/listarNoticia.php?e=1");
     }
 }

@@ -58,9 +58,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $typeImagen = $_FILES["imagenNoticia"]["tmp_name"];
                 $imagenUpdate = addslashes(file_get_contents($typeImagen));
                 $updateNoticia = "UPDATE noticia
-                                    SET tituloNoticia = '$tituloNoticiaUpdate', 'imagenNoticia' = '$imagenUpdate', descripcionNoticia ='$descripcionNoticiaUpdate', categoriaNoticia_idcategoriaNoticia = '$categoriaNoticiaUpdate'
+                                    SET tituloNoticia = '$tituloNoticiaUpdate', imagenNoticia = '$imagenUpdate', descripcionNoticia ='$descripcionNoticiaUpdate', categoriaNoticia_idcategoriaNoticia = '$categoriaNoticiaUpdate'
                               WHERE idNoticia = '$idUrl'";
                 if (mysqli_query($conexion, $updateNoticia)) {
+                    session_start();
+                    $_SESSION['status'] = "La noticia ha sido actualizada";
+                    $_SESSION['status_icon'] = "success";
                     header("Location: /view/listarNoticia.php");
                 } else {
                     $error = "Error en la consulta";
@@ -70,6 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     SET tituloNoticia = '$tituloNoticiaUpdate', descripcionNoticia ='$descripcionNoticiaUpdate', categoriaNoticia_idcategoriaNoticia = '$categoriaNoticiaUpdate'
                               WHERE idNoticia = '$idUrl'";
                 if (mysqli_query($conexion, $updateNoticia)) {
+                    session_start();
+                    $_SESSION['status'] = "La noticia ha sido actualizada";
+                    $_SESSION['status_icon'] = "success";
                     header("Location: /view/listarNoticia.php");
                 } else {
                     $error = "Error en la consulta";
@@ -110,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id="primero" class="single-tab" >
         <div class="center" style=" width: 40%; top: 40px;  left: 15%;">
             <h2>Editar Noticia</h2>
-            <form action="" method="post" class="accion">
+            <form action="" method="post" class="accion" enctype="multipart/form-data">
                 <div class="txt_field panel">
                     <input 
                         type="text" 
