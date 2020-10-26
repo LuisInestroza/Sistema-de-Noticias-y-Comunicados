@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Sistema de Registro de Noticias y Comunicados</h1>
    </div>
     <!-- Panel de acciones -->
-   <div class="tabs">
+   <!-- <div class="tabs">
        <div class="tabs-navegation">
            <div class="nav">
                <a href="../index.php">
@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </a> 
             </div>
         </div>  
-    </div>
+    </div> -->
     <div class="alertas">
         <?php  echo "<p>$error</p>" ;?>
     </div>
@@ -147,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 <div class="txt_field panel">
                     <select name="categoriaNoticia" id="" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="" disabled selected>Categoria de Noticia</option>
                         <!-- Mostrar las categorias de noticia en la etiqueta SELECT -->
                         <?php while ($filas = mysqli_fetch_assoc($categoriaNoticia)):?>
                         <option value="<?php echo $filas["idCategoriaNoticia"]; ?>"><?php echo $filas["categoriaNoticia"];?></option>
@@ -157,7 +157,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="txt_field">
                     <input type="file" name="imagenNoticia" id="" required>  
-                    <span></span>
+                    
+                    
                 </div>
                 <div class="txt_field panel">
                     <textarea name="descripcionNoticia" id="" cols="30" rows="10" required></textarea>

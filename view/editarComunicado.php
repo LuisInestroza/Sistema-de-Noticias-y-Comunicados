@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <div class="editarComunicado">
-        <div class="center form-editarComunicado ">
+        <div class="center form-editarComunicado">
             <h2>Editar Comunicado</h2>      
             <form action="" method="post" class="accion" enctype="multipart/form-data">
                 <div class="txt_field">

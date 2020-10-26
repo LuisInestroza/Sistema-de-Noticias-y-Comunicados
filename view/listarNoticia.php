@@ -9,7 +9,7 @@ require_once "../config/db.php";
 
 // Declarar variables
 $idUsuario = $_SESSION["idUsuario"];
-$sql ="SELECT * FROM noticia WHERE usuario_idUsuario = '$idUsuario'";
+$sql ="SELECT *,date_format(fechaNoticia, '%d %M, %Y') as fechaNoticia FROM noticia WHERE usuario_idUsuario = '$idUsuario'";
 
 $resultado = mysqli_query($conexion, $sql);
 
@@ -88,36 +88,29 @@ $resultado = mysqli_query($conexion, $sql);
             </div>
         </div>
     </div>
-    <div id="segundo" class="single-tab">
-        <table class="tables">
-            <tr>
-                <th>Titulo</th>
-                <th>Imagen</th>
-                <th>Fecha de publicación</th>
-                <th>Acciones</th>
-            </tr>
-
-
+    <div class="lista-noticias">
+        <div class="noticias">
             <?php while ($filas = mysqli_fetch_assoc($resultado)): ?>
-            <tr>
-                <td><?php echo $filas["tituloNoticia"]; ?></td>
-                <td><?php echo "<img src = 'data:image/;base64,".base64_encode($filas['imagenNoticia'])."' />";;?></td>
-                <td><?php echo $filas["fechaNoticia"]; ?></td>
+            <div class="contenedor">
+                <?php echo "<img src = 'data:image/;base64,".base64_encode($filas['imagenNoticia'])."' />";;?></td>
+                <p class="titulo-noticia"><?php echo $filas["tituloNoticia"]; ?></p>
+                <p class="fecha-noticia"><?php echo $filas["fechaNoticia"]; ?></p>
                 <td class="acciones">
                     <a href="/view/editarNoticia.php?id=<?php echo $filas["idNoticia"];?>"><i
                             class="fas fa-edit"></i></a>
                     <a href="/view/eliminarNoticia.php?id=<?php echo $filas["idNoticia"];?>" class="btn-deleteNoticia"
                         id="btn-deleteNoticia"><i class="fas fa-trash"></i></a>
                 </td>
-            </tr>
+            </div>
             <?php endwhile; ?>
 
-        </table>
+        </div>
 
-        <?php if(isset($_GET['e'])):?>
-        <div class="flash-data" id="flash-data" data-flashdata="<?= $_GET['e']; ?>"></div>
-        <?php endif; ?>
+       
     </div>
+    <?php if(isset($_GET['e'])):?>
+        <div class="flash-data" id="flash-data" data-flashdata="<?= $_GET['e']; ?>"></div>
+    <?php endif; ?>
 </body>
 <!-- SweatAlert -->
 <script src="../js/jquery-3.5.1.min.js"></script>

@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php  echo "<p>$error</p>" ;?> 
     </div>
     <div id="primero" class="single-tab" >
-        <div class="center" style=" width: 40%; top: 40px;  left: 15%;">
+        <div class="center" style="width: 50%">
             <h2>Editar Noticia</h2>
             <form action="" method="post" class="accion" enctype="multipart/form-data">
                 <div class="txt_field panel">

@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Sistema de Registro de Noticias y Comunicados</h1>
    </div>
     <!-- Panel de acciones -->
-   <div class="tabs">
+   <!-- <div class="tabs">
        <div class="tabs-navegation">
            <div class="nav">
                <a href="../index.php">
@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
     
         </div>  
-    </div>
+    </div> -->
     <div class="alertas">
         <?php  echo "<p>$Error</p>" ;?>
     </div>

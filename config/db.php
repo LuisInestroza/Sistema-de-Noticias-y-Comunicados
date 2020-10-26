@@ -8,6 +8,7 @@ define('DB_NAME', 'muni2020');
 
 // Conexion
 $conexion = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+mysqli_query($conexion, "SET lc_time_names = 'es_ES'");
 
 // Virificar que se haga la conexion
 if($conexion === false){

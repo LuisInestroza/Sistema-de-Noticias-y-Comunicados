@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    
    <!-- Formulario Login -->
-   <div class="center">  
+   <div class="center" style="top:90px">  
         <h2>Iniciar Sesión</h2>
         <form action="" method="post">
             <div class="txt_field">
