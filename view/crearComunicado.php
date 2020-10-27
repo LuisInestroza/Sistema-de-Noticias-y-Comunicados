@@ -108,11 +108,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </a>
            </div>
            
-            <div class="nav">
+            <div class="nav user">
+                <i class="fas fa-user"></i>
+                <?php echo $_SESSION["nombre"]; ?>
+            </div>
+             <div class="nav">
                 <a href="../logout.php">
-                    <i class="fas fa-sign-out-alt"></i> 
+                    <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesion
-                </a> 
+                </a>
             </div>
     
         </div>  

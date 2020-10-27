@@ -73,8 +73,11 @@ $resultado = mysqli_query($conexion, $sql);
                     Listar Comunicados
                 </a>
             </div>
-
-            <div class="nav">
+            <div class="nav user">
+                <i class="fas fa-user"></i>
+                <?php echo $_SESSION["nombre"]; ?>
+            </div>
+             <div class="nav">
                 <a href="../logout.php">
                     <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesion

@@ -36,7 +36,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
    <!-- Panel de acciones -->
    <div class="tabs">
-       <div class="tabs-navegation" style="padding-bottom: 41px;">
+       <div class="tabs-nav" style="padding-bottom: 41px;">
             <div class="nav" style="position: absolute; right:0;">
                 <a href="logout.php">
                     <i class="fas fa-sign-out-alt"></i> 

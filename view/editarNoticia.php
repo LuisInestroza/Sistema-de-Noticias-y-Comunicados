@@ -97,18 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Editar Noticia - Municipalidad de Siguatepeque</title>
 </head>
 <body>
- <!-- Cabecera -->
-    <!-- <div class="logo">
-        <img src="../img/logo.png" alt="" srcset="">
-    </div>
-    <div class="escudo">
-        <img src="../img/escudo.png" alt="" srcset="">
-    </div>
-    
-   <div class="cabecera">
-        <h1>Sistema de Registro de Noticias y Comunicados</h1>
-   </div> -->
-
    <!-- Alertas -->
    <div class="alertas">
         <?php  echo "<p>$error</p>" ;?> 
@@ -150,9 +138,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="span-descripcion"></span>
                     <label for="">Descripción de Noticia</label>
                 </div>
-                
+                <div class="editar-imagenes">
+                    <a href="/view/editarImagenesNoticia.php?id=<?php echo $idUrl;?>">Editar Imagenes</a>
+                </div>
                 <input type="hidden" name="update" id="id" value="<?php echo $idUrl; ?>">    
-                <input type="submit" value="Editar Noticia">
+                <input type="submit" value="Editar Noticia" style="margin-bottom:10px;">
+                
+                
                 
             </form>
         </div>
