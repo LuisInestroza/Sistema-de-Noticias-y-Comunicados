@@ -426,7 +426,6 @@ input[type="submit"]:hover {
 .form-comunicado {
   position: relative;
   top: 60px;
-  left: 35%;
   transform: tranlate(-50%, -50%);
   width: 400px;
   background: white;
@@ -455,7 +454,7 @@ div.txt_field:nth-child(4) {
   width: 42%;
   position: relative;
   
-  left: 27%;
+
   transform: tranlate(-50%, -50%);
   background: white;
   border-radius: 10px;
@@ -467,7 +466,7 @@ div.txt_field:nth-child(4) {
 
 .form-imagen {
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 35%;
   transform: tranlate(-50%, -50%);
   width: 400px;
@@ -476,7 +475,13 @@ div.txt_field:nth-child(4) {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
 
 }
-
+.form-imagen .noticia-text{
+  font-weight: bolder;
+}
+.form-imagen .titulo-noticia-reciente{
+  font-weight: bold;
+  color: #0095de;
+}
 .txt_field textarea {
   width: 100%;
   padding: 10px 5px;

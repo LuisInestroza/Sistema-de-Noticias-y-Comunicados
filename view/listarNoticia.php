@@ -36,7 +36,7 @@ $resultado = mysqli_query($conexion, $sql);
 
 <body>
     <!-- Cabecera -->
-    <div class="logo">
+    <!-- <div class="logo">
         <img src="../img/logo.png" alt="" srcset="">
     </div>
     <div class="escudo">
@@ -45,7 +45,7 @@ $resultado = mysqli_query($conexion, $sql);
 
     <div class="cabecera">
         <h1>Sistema de Registro de Noticias y Comunicados</h1>
-    </div>
+    </div> -->
     <!-- Panel de acciones -->
     <div class="tabs">
         <div class="tabs-navegation">

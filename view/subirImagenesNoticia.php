@@ -8,22 +8,28 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 // Incorporar la base de datos
 require_once "../config/db.php";
 // Listar las noticias
-$listarNoticias = "SELECT * FROM noticia";
+$listarNoticiaReciente = "SELECT idNoticia, tituloNoticia FROM noticia  WHERE idNoticia = (SELECT MAX(idNoticia) FROM noticia);";
+
 // Ejecutar la consulta
-$queryNoticias = mysqli_query($conexion, $listarNoticias);
+$queryNoticias = mysqli_query($conexion, $listarNoticiaReciente);
+while ($fila = mysqli_fetch_assoc($queryNoticias)) {
+    $idNoticia = $fila["idNoticia"];
+    $tituloNoticia = $fila["tituloNoticia"];
+    
+}
 
 // Declarar variables
-$idNoticia = 0;
+//$idNoticia = 0;
 $imagenes = $error = "";
 
 // Verificar que haga el metodo post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Revisar que los campos no estan vacios
-    if (empty(trim($_POST["tituloNoticia"]))) {
-        $error = "Debes seleccionar la noticia";
-    } else {
-        $idNoticia = trim($_POST["tituloNoticia"]);
-    }
+    // if (empty(trim($_POST["tituloNoticia"]))) {
+    //     $error = "Debes seleccionar la noticia";
+    // } else {
+    //     $idNoticia = trim($_POST["tituloNoticia"]);
+    // }
     
     // Si no hay errores
     if (empty($error)) {
@@ -72,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <!-- Cabecera -->
-    <div class="logo">
+    <!-- <div class="logo">
         <img src="../img/logo.png" alt="" srcset="">
     </div>
     <div class="escudo">
@@ -81,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
    <div class="cabecera">
         <h1>Sistema de Registro de Noticias y Comunicados</h1>
-   </div>
+   </div> -->
     <!-- Panel de acciones -->
    <div class="tabs">
        <div class="tabs-navegation">
@@ -133,17 +139,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>Subir Imagenes</h2>
             <form action="" method="post" class="accion" enctype="multipart/form-data"> 
                 <div class="txt_field">
-                    <select name="tituloNoticia" id="" required>
-                        <option value="" disabled selected>Selecciona la noticia</option>
-                        <!-- Mostrar las categorias de noticia en la etiqueta SELECT -->
-                        <?php while ($filas = mysqli_fetch_assoc($queryNoticias)):?>
-                        <option value="<?php echo $filas["idNoticia"];?>"><?php echo $filas["tituloNoticia"];?></option>
-                        <?php  endwhile;?>
-                        <!-- Fin del ciclo while -->
-                    </select>
-                    
+                    <p class="noticia-text">Noticia:</p>
+                    <p class="titulo-noticia-reciente"><?php echo $tituloNoticia; ?></p>
 
-                </div>
+                </div> 
                 <div class="txt_field">
                     <input type="file" name="imagen[]" id="" required multiple>  
                     <span></span>

@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
  <!-- Cabecera -->
-    <div class="logo">
+    <!-- <div class="logo">
         <img src="../img/logo.png" alt="" srcset="">
     </div>
     <div class="escudo">
@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
    <div class="cabecera">
         <h1>Sistema de Registro de Noticias y Comunicados</h1>
-   </div>
+   </div> -->
 
    <!-- Alertas -->
    <div class="alertas">

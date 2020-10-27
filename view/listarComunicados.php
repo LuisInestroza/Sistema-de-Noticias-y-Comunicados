@@ -30,7 +30,7 @@ $resultado = mysqli_query($conexion, $sql);
 </head>
 <body>
     <!-- Cabecera -->
-    <div class="logo">
+    <!-- <div class="logo">
         <img src="../img/logo.png" alt="" srcset="">
     </div>
     <div class="escudo">
@@ -39,7 +39,49 @@ $resultado = mysqli_query($conexion, $sql);
     
    <div class="cabecera">
         <h1>Sistema de Registro de Noticias y Comunicados</h1>
-   </div>
+   </div> -->
+    <!-- Panel de acciones -->
+    <div class="tabs">
+        <div class="tabs-navegation">
+            <div class="nav">
+                <a href="../index.php">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </div>
+            <div class="nav">
+                <a href="/view/crearNoticia.php">
+                    <i class="fas fa-newspaper"></i>
+                    Noticias
+                </a>
+            </div>
+            <div class="nav">
+                <a href="/view/listarNoticia.php">
+                    <i class="fas fa-list-alt"></i>
+                    Listar Noticias
+                </a>
+            </div>
+            <div class="nav">
+                <a href="/view/crearComunicado.php">
+                    <i class="fas fa-file-alt"></i>
+                    Comunicados
+                </a>
+            </div>
+            <div class="nav">
+                <a href="/view/listarComunicados.php">
+                    <i class="fas fa-list-alt"></i>
+                    Listar Comunicados
+                </a>
+            </div>
+
+            <div class="nav">
+                <a href="../logout.php">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Cerrar Sesion
+                </a>
+            </div>
+        </div>
+    </div>
    
     <div class="lista-comunicados">
         <div class="comunicado">
