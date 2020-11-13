@@ -8,30 +8,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 // Incorporar la base de datos
 require_once "../config/db.php";
 // Listar las noticias
-$listarNoticiaReciente = "SELECT idNoticia, tituloNoticia FROM noticia  WHERE idNoticia = (SELECT MAX(idNoticia) FROM noticia);";
+$listarNoticiaReciente = "SELECT idNoticia, tituloNoticia FROM noticia  
+                            WHERE idNoticia = (SELECT MAX(idNoticia) FROM noticia);";
 
 // Ejecutar la consulta
-$queryNoticias = mysqli_query($conexion, $listarNoticiaReciente);
-while ($fila = mysqli_fetch_assoc($queryNoticias)) {
+$queryNoticia = mysqli_query($conexion, $listarNoticiaReciente);
+while ($fila = mysqli_fetch_assoc($queryNoticia)) {
     $idNoticia = $fila["idNoticia"];
     $tituloNoticia = $fila["tituloNoticia"];
-    
 }
 
 // Declarar variables
-//$idNoticia = 0;
 $imagenes = $error = "";
 
 // Verificar que haga el metodo post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Revisar que los campos no estan vacios
-    // if (empty(trim($_POST["tituloNoticia"]))) {
-    //     $error = "Debes seleccionar la noticia";
-    // } else {
-    //     $idNoticia = trim($_POST["tituloNoticia"]);
-    // }
-    
-    // Si no hay errores
+
     if (empty($error)) {
         if (isset($_FILES['imagen'])) {
             $cantidad = count($_FILES["imagen"]["tmp_name"]);
@@ -50,9 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     } else {
                         $error = "Imagenes no almacenadas";
                     }
-                    // Redireccionar la pagina principal
-                   
-                // Cerrar la conexion a la base de datos
                 } else {
                     $error =  "Solo formato png y jpeg";
                 }
@@ -77,18 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Subir Imagenes - Municipalidad de Siguatepeque</title>
 </head>
 <body>
-    <!-- Cabecera -->
-    <!-- <div class="logo">
-        <img src="../img/logo.png" alt="" srcset="">
-    </div>
-    <div class="escudo">
-        <img src="../img/escudo.png" alt="" srcset="">
-    </div>
-    
-   <div class="cabecera">
-        <h1>Sistema de Registro de Noticias y Comunicados</h1>
-   </div> -->
-    <!-- Panel de acciones -->
    <div class="tabs">
        <div class="tabs-navegation">
            <div class="nav">
@@ -122,11 +99,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </a>
            </div>
            
-            <div class="nav">
+            <div class="nav user">
+                <i class="fas fa-user"></i>
+                <?php echo $_SESSION["nombre"]; ?>
+            </div>
+             <div class="nav">
                 <a href="../logout.php">
-                    <i class="fas fa-sign-out-alt"></i> 
+                    <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesion
-                </a> 
+                </a>
             </div>
           
         </div>  

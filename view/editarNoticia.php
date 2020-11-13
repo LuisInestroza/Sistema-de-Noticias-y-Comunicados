@@ -9,7 +9,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 // Incorporar la base de datos
 require_once "../config/db.php";
 $error = "";
+// Query para listar la noticia
 $sqlCategoria = "SELECT * FROM categorianoticia";
+// Ejecutar el script
 $listarCategoria = mysqli_query($conexion, $sqlCategoria);
 
 // Verificar que exista el id en la url

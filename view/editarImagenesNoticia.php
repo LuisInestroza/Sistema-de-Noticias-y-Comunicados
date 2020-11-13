@@ -9,16 +9,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 require_once "../config/db.php";
 // Listar las noticias
 
-$listarImagenes = "";
 
-
+// Virificar que el id en la Url
 if (isset($_GET["id"])) {
     $idUrl = $_GET["id"];
     
 }
 // Declarar variables
-//$idNoticia = 0;
-$imagenes = $error = "";
+$error = "";
 
 // Verificar que haga el metodo post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -44,9 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     } else {
                         $error = "Imagenes no almacenadas";
                     }
-                    // Redireccionar la pagina principal
-                   
-                // Cerrar la conexion a la base de datos
+
                 } else {
                     $error =  "Solo formato png y jpeg";
                 }
@@ -79,11 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="center form-imagen">
             <h2>Editar Imagenes</h2>
             <form action="" method="post" class="accion" enctype="multipart/form-data"> 
-                <div class="imagen">
-                    <?php //while ($filas = mysqli_fetch_assoc($listarImagenes)):?>
-                        <?php //echo "<img src = 'data:image/jpeg;base64,".base64_encode($filas["imagen"])."' />";;?>
-                    <?php  //endwhile;?>
-                </div> 
                 <div class="txt_field">
                     <input type="file" name="imagen[]" id="" required multiple>  
                     <span></span>

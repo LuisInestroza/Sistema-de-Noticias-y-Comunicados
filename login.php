@@ -1,7 +1,6 @@
 <?php
 // Metodo de iniciar sesion
 session_start();
-
 // Verificar que el usuario este logueado
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("Location: index.php");
@@ -9,8 +8,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 }
 // incluir la carpteta de la base de datos
 require_once("./config/db.php");
-
-
 // Definir variables
 $nombre = $nombreUsuario = $password = "";
 $Error= "";
@@ -32,52 +29,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar las credenciales
     if (empty($Error)) {
         // Query
-        $sql = "SELECT `idUsuario`,`nombre`, `nombreUsuario`, `password` FROM `usuario` WHERE `nombreUsuario` = ?";
+        $sql = "SELECT `idUsuario`,`nombre`, `nombreUsuario`, `password` 
+                    FROM `usuario` 
+                WHERE `nombreUsuario` = '$nombreUsuario'";
 
-        if ($stmt = mysqli_prepare($conexion, $sql)) {
-            mysqli_stmt_bind_param($stmt, "s", $paramNombreUsuario);
-            // Enviar parametro
-            $paramNombreUsuario = $nombreUsuario;
-
-            // Ejecutar el query
-            if (mysqli_stmt_execute($stmt)) {
-                // Resultado
-                mysqli_stmt_store_result($stmt);
-
-                // Verifica que exista un usuario en la base de datos
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    // Enlazar los valores
-                    mysqli_stmt_bind_result($stmt, $id, $nombre, $nombreUsuario, $password);
-                    if (mysqli_stmt_fetch($stmt)) {
-                        if ($_POST['password'] === $password) {
-                            // Si la contraseña es correcta iniciar sesion
-                            session_start();
-                            // Store de variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["idUsuario"] = $id;
-                            $_SESSION["nombre"] = $nombre;
-                            $_SESSION["nombreUsuario"] = $nombreUsuario;
-
-                            // Redireccionar a la pagina
-                            header("Location: index.php");
-                        } else {
-                            $_SESSION['status'] = "La contraseña no es correcta";
-                            $_SESSION['status_icon'] = "error";
-                           
-                            
-                        }
-                    }
-                } else {
-                    $_SESSION['status'] = "El usuario no existe";
-                    $_SESSION['status_icon'] = "error";
-              
+        if ($resultadoQuery = mysqli_query($conexion, $sql)) {
+           
+            // Verifica que exista un usuario en la base de datos
+            if (mysqli_num_rows($resultadoQuery) == 1) {
+                // Enlazar los valore
+                while($filas = mysqli_fetch_array($resultadoQuery)){
+                   $id = $filas["idUsuario"];
+                   $nombre = $filas["nombre"];
+                   $nombreUsuario = $filas["nombreUsuario"];
+                   $password = $filas["password"];
                 }
+                if ($_POST['password'] === $password) {
+                    // Si la contraseña es correcta iniciar sesion
+                    session_start();
+                    // Store de variables
+                    $_SESSION["loggedin"] = true;
+                    $_SESSION["idUsuario"] = $id;
+                    $_SESSION["nombre"] = $nombre;
+                    $_SESSION["nombreUsuario"] = $nombreUsuario;
+
+                    // Redireccionar a la pagina
+                    header("Location: index.php");
+                } else {
+                    $_SESSION['status'] = "La contraseña no es correcta";
+                    $_SESSION['status_icon'] = "error";         
+                }
+                
             } else {
-                echo "Algo salio mal";
+                $_SESSION['status'] = "El usuario no existe";
+                $_SESSION['status_icon'] = "error";
             }
+        }else{
+            $Error = "Error en la consulta";
         }
-        // Cerrar el statement
-        mysqli_stmt_close($stmt);
     }
     // Cerrar la conexion
     mysqli_close($conexion);

@@ -9,8 +9,12 @@ require_once "../config/db.php";
 
 // Declarar variables
 $idUsuario = $_SESSION["idUsuario"];
-$sql ="SELECT *,  date_format(fechaComunicado, '%d %M, %Y') as fechaComunicado  FROM comunicado WHERE usuario_idUsuario = '$idUsuario'";
 
+//Query
+$sql ="SELECT *,  date_format(fechaComunicado, '%d %M, %Y') as fechaComunicado  FROM comunicado 
+        WHERE usuario_idUsuario = '$idUsuario'";
+
+// Ejecuutar la consulta
 $resultado = mysqli_query($conexion, $sql);
 
 
@@ -29,18 +33,7 @@ $resultado = mysqli_query($conexion, $sql);
     <title>Listar Comunicados - Municipalidad de Siguatepeque</title>
 </head>
 <body>
-    <!-- Cabecera -->
-    <!-- <div class="logo">
-        <img src="../img/logo.png" alt="" srcset="">
-    </div>
-    <div class="escudo">
-        <img src="../img/escudo.png" alt="" srcset="">
-    </div>
-    
-   <div class="cabecera">
-        <h1>Sistema de Registro de Noticias y Comunicados</h1>
-   </div> -->
-    <!-- Panel de acciones -->
+ 
     <div class="tabs">
         <div class="tabs-navegation">
             <div class="nav">

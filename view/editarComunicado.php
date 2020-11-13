@@ -17,6 +17,7 @@ if (isset($_GET["id"])) {
 
     // Verificar que el query se ejecute
     if ($listarComunicado = mysqli_query($conexion, $sql)) {
+        // Listar los datos
         while ($comunicado = mysqli_fetch_assoc($listarComunicado)) {
             $codigoComunicadoUpdate = $comunicado["codigoComunicado"];
             $imagenComunicadoUpdate = $comunicado["imagen"];
