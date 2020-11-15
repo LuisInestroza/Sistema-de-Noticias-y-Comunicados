@@ -28,8 +28,7 @@ $resultado = mysqli_query($conexion, $sql);
     <link rel="stylesheet" href="../css/style.css">
     <link rel="shortcut icon" href="../logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/all.min.css">
     <title>Listar Comunicados - Municipalidad de Siguatepeque</title>
 </head>
 <body>
@@ -106,6 +105,7 @@ $resultado = mysqli_query($conexion, $sql);
 <script src="../js/jquery-3.5.1.min.js"></script>
 <script src="../js/sweetalert2.all.min.js"></script>
 <script src="../js/deleteComunicado.js"></script>
+<script src="/js/all.min.js"></script>
 <?php include("../include/sweetalert.php"); ?>
 
 </html>

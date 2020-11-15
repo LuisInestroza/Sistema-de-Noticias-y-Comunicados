@@ -58,22 +58,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../css/style.css">
     <link rel="shortcut icon" href="../logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/all.min.css">
     <title>Crear Comunicado - Municipalidad de Siguatepeque</title>
 </head>
 <body>
-    <!-- Cabecera -->
-    <!-- <div class="logo">
-        <img src="../img/logo.png" alt="" srcset="">
-    </div>
-    <div class="escudo">
-        <img src="../img/escudo.png" alt="" srcset="">
-    </div>
-    
-   <div class="cabecera">
-        <h1>Sistema de Registro de Noticias y Comunicados</h1>
-   </div> -->
     <!-- Panel de acciones -->
    <div class="tabs">
        <div class="tabs-navegation">
@@ -148,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
 </body>
-
+<script src="/js/all.min.js"></script>
 
 
 </html>
