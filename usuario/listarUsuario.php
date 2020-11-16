@@ -41,25 +41,25 @@ $resultado = mysqli_query($conexion, $sql);
                 </a>
            </div>
            <div class="nav">
-               <a href="/view/crearNoticia.php">
+               <a href="/noticia/crearNoticia.php">
                     <i class="fas fa-newspaper"></i>
                     Noticias
                 </a>
            </div>
            <div class="nav">
-               <a href="/view/listarNoticia.php">
+               <a href="/noticia/listarNoticia.php">
                     <i class="fas fa-list-alt"></i>
                     Listar Noticias
                 </a>
            </div>
            <div class="nav">  
-               <a href="/view/crearComunicado.php">
+               <a href="/comunicado/crearComunicado.php">
                     <i class="fas fa-file-alt"></i> 
                     Comunicados
                 </a>
            </div>
            <div class="nav">
-                <a href="/view/listarComunicados.php">
+                <a href="/comunicado/listarComunicados.php">
                     <i class="fas fa-list-alt"></i>
                     Listar Comunicados
                 </a>
@@ -111,7 +111,7 @@ $resultado = mysqli_query($conexion, $sql);
             <td><?php echo $filas["nombreUsuario"];?></td>
             <td><?php echo $filas["departamento"] ?></td>
             <td><?php echo $filas["rolUser"]; ?></td>
-            <td>
+            <td class = "acciones">
                 <a href="/usuario/editarUsuario.php?id=<?php echo $filas["idUsuario"];?>"><i class="fas fa-edit"></i></a>
                 <a href="/usuario/eliminarUsuario.php?id=<?php echo $filas["idUsuario"];?>" class="btn-deleteUser"
                         id="btn-deleteUser"><i class="fas fa-trash"></i></a>

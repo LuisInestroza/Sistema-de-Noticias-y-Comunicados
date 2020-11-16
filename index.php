@@ -24,7 +24,18 @@ $rolUser = $_SESSION["rol"];
     <title>Municipalidad - Siguatepeque 2020</title>
 </head>
 <body>
+    <!-- Cabecera -->
+    <div class="logo">
+        <img src="./img/logo.png" alt="" srcset="">
+    </div>
+    <div class="escudo">
+        <img src="./img/escudo.png" alt="" srcset="">
+    </div>
     
+   <div class="cabecera">
+        <h1>Sistema de Registro de Noticias y Comunicados</h1>
+   </div>
+
    <!-- Panel de acciones -->
    <div class="tabs">
        <div class="tabs-nav" style="padding-bottom: 41px;">
@@ -42,29 +53,29 @@ $rolUser = $_SESSION["rol"];
         <!-- Contenidos de form -->
         <div class="tabs-content" style="margin: 50px auto; margin-top: 0px;">
             <!-- Crear Noticias -->
-            <a href="/view/crearNoticia.php">
+            <a href="/noticia/crearNoticia.php">
                 <i class="fas fa-newspaper"></i> <br>
                 Noticias
             </a>
             <!-- Listar Noticias -->
-           <a href="/view/listarNoticia.php">
+           <a href="/noticia/listarNoticia.php">
                 <i class="fas fa-list-alt"></i> <br>
                 Listar Noticias
             </a>
             <!-- Crear Comunicados -->
-            <a href="/view/crearComunicado.php">
+            <a href="/comunicado/crearComunicado.php">
                 <i class="fas fa-file-alt"></i> <br>
                 Comunicados
             </a>
             <!-- Listar Comunicados -->
-            <a href="/view/listarComunicados.php">
+            <a href="/comunicado/listarComunicados.php">
                 <i class="fas fa-list-alt"></i> <br>
                 Listar Comunicados
             </a>
 
             <!-- Verificar mostrar el contenido los botone de usuario mediante el user -->
             <?php if($rolUser === "Admin"){ ?>
-            <a href="#" class="user" id="user">
+            <a href="/usuario/crearUsuario.php" class="user" id="user">
                 <i class="fas fa-user"></i><br>
                 Usuarios
             </a>

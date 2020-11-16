@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="shortcut icon" href="../logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/all.min.css">
-    <title>Crear Comunicado - Municipalidad de Siguatepeque</title>
+    <title>Crear Usuario - Municipalidad de Siguatepeque</title>
 </head>
 <body>
     <!-- Panel de acciones -->
@@ -101,25 +101,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </a>
            </div>
            <div class="nav">
-               <a href="/view/crearNoticia.php">
+               <a href="/noticia/crearNoticia.php">
                     <i class="fas fa-newspaper"></i>
                     Noticias
                 </a>
            </div>
            <div class="nav">
-               <a href="/view/listarNoticia.php">
+               <a href="/noticia/listarNoticia.php">
                     <i class="fas fa-list-alt"></i>
                     Listar Noticias
                 </a>
            </div>
            <div class="nav">  
-               <a href="/view/crearComunicado.php">
+               <a href="/comunicado/crearComunicado.php">
                     <i class="fas fa-file-alt"></i> 
                     Comunicados
                 </a>
            </div>
            <div class="nav">
-                <a href="/view/listarComunicados.php">
+                <a href="/comunicado/listarComunicados.php">
                     <i class="fas fa-list-alt"></i>
                     Listar Comunicados
                 </a>

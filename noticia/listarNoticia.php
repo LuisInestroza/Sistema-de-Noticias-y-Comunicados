@@ -51,39 +51,39 @@ if($rolUser === "Admin"){
                 </a>
             </div>
             <div class="nav">
-                <a href="/view/crearNoticia.php">
+                <a href="/noticia/crearNoticia.php">
                     <i class="fas fa-newspaper"></i>
                     Noticias
                 </a>
             </div>
             <div class="nav">
-                <a href="/view/listarNoticia.php">
+                <a href="/noticia/listarNoticia.php">
                     <i class="fas fa-list-alt"></i>
                     Listar Noticias
                 </a>
             </div>
             <div class="nav">
-                <a href="/view/crearComunicado.php">
+                <a href="/comunicado/crearComunicado.php">
                     <i class="fas fa-file-alt"></i>
                     Comunicados
                 </a>
             </div>
             <div class="nav">
-                <a href="/view/listarComunicados.php">
+                <a href="/comunicado/listarComunicados.php">
                     <i class="fas fa-list-alt"></i>
                     Listar Comunicados
                 </a>
             </div>
             <?php if($rolUser === "Admin"){ ?>
             <div class="nav">
-                <a href="">
+                <a href="/usuario/crearUsuario.php">
                     <i class="fas fa-user"></i>
                     Usuarios
                 </a>
             </div>
             
             <div class="nav">
-                <a href="">
+                <a href="/usuario/listarUsuario.php">
                     <i class="fas fa-list-alt"></i>
                     Listar Usuarios
                 </a>
@@ -110,9 +110,9 @@ if($rolUser === "Admin"){
                 <p class="titulo-noticia"><?php echo $filas["tituloNoticia"]; ?></p>
                 <p class="fecha-noticia"><?php echo $filas["fechaNoticia"]; ?></p>
                 <td class="acciones">
-                    <a href="/view/editarNoticia.php?id=<?php echo $filas["idNoticia"];?>"><i
+                    <a href="/noticia/editarNoticia.php?id=<?php echo $filas["idNoticia"];?>"><i
                             class="fas fa-edit"></i></a>
-                    <a href="/view/eliminarNoticia.php?id=<?php echo $filas["idNoticia"];?>" class="btn-deleteNoticia"
+                    <a href="/noticia/eliminarNoticia.php?id=<?php echo $filas["idNoticia"];?>" class="btn-deleteNoticia"
                         id="btn-deleteNoticia"><i class="fas fa-trash"></i></a>
                 </td>
             </div>

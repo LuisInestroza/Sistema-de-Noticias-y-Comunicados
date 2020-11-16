@@ -55,7 +55,9 @@ body h1 {
 .tables th {
   border: 1px solid #ddd;
   padding: 8px;
+  text-align: center;
 }
+
 
 .tables tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -65,11 +67,6 @@ body h1 {
   background-color: #ddd;
 }
 
-.tables img {
-  width: 50px;
-  height: 50px;
-  align-items: center;
-}
 
 .tables th {
   padding-top: 12px;
@@ -77,6 +74,7 @@ body h1 {
   text-align: left;
   background-color: #506be4;
   color: white;
+  text-align: center;
 }
 
 .lista-comunicados{
