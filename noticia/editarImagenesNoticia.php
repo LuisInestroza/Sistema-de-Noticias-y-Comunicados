@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if ($resultado === true) {
                         $_SESSION['status'] = "Las imagenes han sido actualizadas";
                         $_SESSION['status_icon'] = "success";
-                        header("Location: /view/listarNoticia.php");
+                        header("Location: /noticia/listarNoticia.php");
                     } else {
                         $error = "Imagenes no almacenadas";
                     }

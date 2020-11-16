@@ -95,7 +95,7 @@ if($rolUser === "Admin"){
                 <?php echo $_SESSION["nombre"]; ?>
             </div>
              <div class="nav">
-                <a href="../logout.php" style="color: #ffffff; font-weight: bolder; right: 0; position: absolute; top:0px;">
+                <a href="../logout.php" style="color: #ffffff; font-size: 14px; font-weight: bolder; right: 0; position: absolute; top:0px;">
                     <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesion
                 </a>

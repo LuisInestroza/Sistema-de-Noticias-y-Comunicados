@@ -15,6 +15,6 @@ if (isset($_GET["id"])) {
     
     if ($resultado === true) {
         // Redireccionar
-        header("Location: /view/listarNoticia.php?e=1");
+        header("Location: /noticia/listarNoticia.php?e=1");
     }
 }

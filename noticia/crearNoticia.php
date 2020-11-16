@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_start();
                 $_SESSION['status'] = "Noticia Creada";
                 $_SESSION['status_icon'] = "success";
-                header("Location: /view/subirImagenesNoticia.php");
+                header("Location: /noticia/subirImagenesNoticia.php");
             } else {
                 $error = "Noticia no registrada";
             }

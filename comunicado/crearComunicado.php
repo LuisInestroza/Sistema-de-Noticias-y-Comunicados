@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_start();
                 $_SESSION['status'] = "Comunicado Creado";
                 $_SESSION['status_icon'] = "success";
-                header("Location: /view/listarComunicados.php");
+                header("Location: /comunicado/listarComunicados.php");
             } else {
                 $Error ="error en la consulta";
             }

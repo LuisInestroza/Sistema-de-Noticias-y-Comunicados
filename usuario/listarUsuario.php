@@ -24,10 +24,11 @@ $resultado = mysqli_query($conexion, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="../logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/all.min.css">
+    
     <title>Listar Usuarios - Municipalidad de Siguatepeque</title>
 </head>
 <body>
@@ -85,7 +86,7 @@ $resultado = mysqli_query($conexion, $sql);
                 <?php echo $_SESSION["nombre"]; ?>
             </div>
              <div class="nav">
-                <a href="../logout.php" style="color: #ffffff; font-weight: bolder; right: 0; position: absolute; top:0px;">
+                <a href="../logout.php" style="color: #ffffff; font-size: 14px; font-weight: bolder; right: 0; position: absolute; top:0px;">
                     <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesion
                 </a>

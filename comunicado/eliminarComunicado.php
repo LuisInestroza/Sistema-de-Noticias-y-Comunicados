@@ -10,6 +10,6 @@ if (isset($_GET["id"])) {
     $resultado = mysqli_query($conexion, $sql);
     if ($resultado === true) {
         // Redireccionar
-        header("Location: /view/listarComunicados.php?e=1");
+        header("Location: /comunicado/listarComunicados.php?e=1");
     }
 }

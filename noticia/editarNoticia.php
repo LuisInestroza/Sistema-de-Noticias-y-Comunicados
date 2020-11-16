@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     session_start();
                     $_SESSION['status'] = "La noticia ha sido actualizada";
                     $_SESSION['status_icon'] = "success";
-                    header("Location: /view/listarNoticia.php");
+                    header("Location: /noticia/listarNoticia.php");
                 } else {
                     $error = "Error en la consulta";
                 }
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     session_start();
                     $_SESSION['status'] = "La noticia ha sido actualizada";
                     $_SESSION['status_icon'] = "success";
-                    header("Location: /view/listarNoticia.php");
+                    header("Location: /noticia/listarNoticia.php");
                 } else {
                     $error = "Error en la consulta";
                 }
@@ -142,10 +142,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="">Descripción de Noticia</label> -->
                 </div>
                 <div class="editar-imagenes">
-                    <a href="/view/editarImagenesNoticia.php?id=<?php echo $idUrl;?>">Editar Imagenes</a>
+                    <a href="/noticia/editarImagenesNoticia.php?id=<?php echo $idUrl;?>">Editar Imagenes</a>
                 </div>
                 <input type="hidden" name="update" id="id" value="<?php echo $idUrl; ?>">    
-                <input type="submit" value="Editar Noticia" style="margin-bottom:10px;">
+                <input type="submit" value="Editar Noticia">
                 
                 
                 
