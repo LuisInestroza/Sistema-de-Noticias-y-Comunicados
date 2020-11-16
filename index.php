@@ -24,18 +24,7 @@ $rolUser = $_SESSION["rol"];
     <title>Municipalidad - Siguatepeque 2020</title>
 </head>
 <body>
-    <!-- Cabecera -->
-    <div class="logo">
-        <img src="./img/logo.png" alt="" srcset="">
-    </div>
-    <div class="escudo">
-        <img src="./img/escudo.png" alt="" srcset="">
-    </div>
     
-   <div class="cabecera">
-        <h1>Sistema de Registro de Noticias y Comunicados</h1>
-   </div>
-
    <!-- Panel de acciones -->
    <div class="tabs">
        <div class="tabs-nav" style="padding-bottom: 41px;">
@@ -79,7 +68,7 @@ $rolUser = $_SESSION["rol"];
                 <i class="fas fa-user"></i><br>
                 Usuarios
             </a>
-            <a href="#" class="list-user">
+            <a href="/usuario/listarUsuario.php" class="list-user">
                 <i class="fas fa-list-alt"></i><br>
                 Listar Usuarios
             </a>

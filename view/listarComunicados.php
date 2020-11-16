@@ -11,13 +11,19 @@ require_once "../config/db.php";
 $rolUser = $_SESSION["rol"];
 $idUsuario = $_SESSION["idUsuario"];
 
-//Query
-$sql ="SELECT *,  date_format(fechaComunicado, '%d %M, %Y') as fechaComunicado  FROM comunicado 
-        WHERE usuario_idUsuario = '$idUsuario'";
-
-// Ejecuutar la consulta
-$resultado = mysqli_query($conexion, $sql);
-
+//Verificar el rol del usario
+if ($rolUser === "Admin") {
+    //Query listar todos los comunicados
+    $sql ="SELECT *,  date_format(fechaComunicado, '%d %M, %Y') as fechaComunicado  FROM comunicado";
+    // Ejecuutar la consulta
+    $resultado = mysqli_query($conexion, $sql);
+} else {
+    //Query listar todos los comunicados de un usuario especifico
+    $sql ="SELECT *,  date_format(fechaComunicado, '%d %M, %Y') as fechaComunicado  FROM comunicado 
+            WHERE usuario_idUsuario = '$idUsuario'";
+    // Ejecuutar la consulta
+    $resultado = mysqli_query($conexion, $sql);
+}
 
 ?>
 

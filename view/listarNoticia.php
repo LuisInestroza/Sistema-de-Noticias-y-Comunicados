@@ -11,14 +11,19 @@ require_once "../config/db.php";
 $idUsuario = $_SESSION["idUsuario"];
 $rolUser = $_SESSION["rol"];
 
-
-// Query
-$sql ="SELECT *,date_format(fechaNoticia, '%d %M, %Y') as fechaNoticia FROM noticia 
+// Verificar el rol del usuario
+if($rolUser === "Admin"){
+    //Query para listar todas las noticias
+    $sql ="SELECT *,date_format(fechaNoticia, '%d %M, %Y') as fechaNoticia FROM noticia";
+    // Ejecutar Consulta
+    $resultado = mysqli_query($conexion, $sql);
+}else{
+    // Query para listar las noticias de un usuario especifico
+    $sql ="SELECT *,date_format(fechaNoticia, '%d %M, %Y') as fechaNoticia FROM noticia 
         WHERE usuario_idUsuario = '$idUsuario'";
-
-// Ejecutar Consulta
-$resultado = mysqli_query($conexion, $sql);
-
+    // Ejecutar Consulta
+    $resultado = mysqli_query($conexion, $sql);
+}
 
 ?>
 
