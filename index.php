@@ -6,8 +6,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: login.php");
     exit;
 }
-?>
 
+$rolUser = $_SESSION["rol"];
+// Verifivar el tipo de rol del usuario
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -69,10 +72,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <i class="fas fa-list-alt"></i> <br>
                 Listar Comunicados
             </a>
+
+            <!-- Verificar mostrar el contenido los botone de usuario mediante el user -->
+            <?php if($rolUser === "Admin"){ ?>
+            <a href="#" class="user" id="user">
+                <i class="fas fa-user"></i><br>
+                Usuarios
+            </a>
+            <a href="#" class="list-user">
+                <i class="fas fa-list-alt"></i><br>
+                Listar Usuarios
+            </a>
+            <?php } ?>
            
         </div>
     </div>
 </body>
 <script src="./js/app.js"></script>
 <script src="/js/all.min.js"></script>
+
 </html>

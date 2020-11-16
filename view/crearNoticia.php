@@ -7,6 +7,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 // Incluir el script de la coenexion a la base de datos
 require_once "../config/db.php";
+$rolUser = $_SESSION["rol"];
 //Incluir el id del usuario loguedo
 $idUsuario = $_SESSION["idUsuario"];
 //Query para listar las categoria de noticias
@@ -75,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="shortcut icon" href="../logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/sample.css">
     <title>Crear Noticia - Municipalidad de Siguatepeque</title>
 </head>
 <body>
@@ -111,13 +113,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Listar Comunicados
                 </a>
            </div>
+           <?php if($rolUser === "Admin"){ ?>
+            <div class="nav">
+                <a href="">
+                    <i class="fas fa-user"></i>
+                    Usuarios
+                </a>
+            </div>
+            
+            <div class="nav">
+                <a href="">
+                    <i class="fas fa-list-alt"></i>
+                    Listar Usuarios
+                </a>
+            </div>
+            <?php } ?>
            
-            <div class="nav user">
+            <div class="nav" style="color: #ffffff; font-size: 14px; font-weight: bolder; right: 190px; position: absolute;">
                 <i class="fas fa-user"></i>
                 <?php echo $_SESSION["nombre"]; ?>
             </div>
              <div class="nav">
-                <a href="../logout.php">
+                <a href="../logout.php" style="color: #ffffff; font-weight: bolder; right: 0; position: absolute; top:0px;">
                     <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesion
                 </a>
@@ -153,9 +170,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
                 </div>
                 <div class="txt_field panel">
-                    <textarea name="descripcionNoticia" id="" cols="30" rows="10" required></textarea>
-                    <span class="span-descripcion"></span>
-                    <label for="">Descripción de Noticia</label>
+                    <textarea name="descripcionNoticia" id="editor" cols="30" rows="10"></textarea>
+                    <!-- <span class="span-descripcion"></span> -->
+                    <!-- <label for="">Descripción de Noticia</label> -->
                     
                 </div>
                 
@@ -169,3 +186,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </html>
 <script src="../js/app.js"></script>
 <script src="/js/all.min.js"></script>
+<script src="/js/ckeditor.js"></script>
+<script>
+		ClassicEditor
+			.create(document.querySelector('#editor'), {
+				// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+			})
+			.then(editor => {
+				window.editor = editor;
+			})
+			.catch(err => {
+				console.error(err.stack);
+			});
+</script>

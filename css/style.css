@@ -323,18 +323,7 @@ input[type="submit"]:hover {
 
 
 }
-div.nav:nth-child(6) {
-  color: #ffffff;
-  font-weight: bolder;
-  right: 190px;
-  position: absolute;
-}
-div.nav:nth-child(7) {
-  color: #ffffff; 
-  font-weight: bolder;
-  right: 0;
-  position: absolute;
-}
+
 
 .tabs i {
   color: #ffffff;
@@ -414,7 +403,7 @@ div.nav:nth-child(7) {
   border: none;
   padding: 20px;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   outline: none;
   font-weight: bold;

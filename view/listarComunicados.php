@@ -8,6 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 require_once "../config/db.php";
 
 // Declarar variables
+$rolUser = $_SESSION["rol"];
 $idUsuario = $_SESSION["idUsuario"];
 
 //Query
@@ -65,12 +66,27 @@ $resultado = mysqli_query($conexion, $sql);
                     Listar Comunicados
                 </a>
             </div>
-            <div class="nav user">
+            <?php if($rolUser === "Admin"){ ?>
+            <div class="nav">
+                <a href="">
+                    <i class="fas fa-user"></i>
+                    Usuarios
+                </a>
+            </div>
+            
+            <div class="nav">
+                <a href="">
+                    <i class="fas fa-list-alt"></i>
+                    Listar Usuarios
+                </a>
+            </div>
+            <?php } ?>
+            <div class="nav" style="color: #ffffff; font-size: 14px; font-weight: bolder; right: 190px; position: absolute;">
                 <i class="fas fa-user"></i>
                 <?php echo $_SESSION["nombre"]; ?>
             </div>
              <div class="nav">
-                <a href="../logout.php">
+                <a href="../logout.php" style="color: #ffffff; font-weight: bolder; right: 0; position: absolute; top:0px;">
                     <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesion
                 </a>

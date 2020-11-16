@@ -19,3 +19,5 @@ const limpiarAlertas = (alertas) => {
     }
   }, 3000);
 };
+
+ 

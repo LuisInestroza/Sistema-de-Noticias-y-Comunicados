@@ -96,6 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/sample.css">
     <title>Editar Noticia - Municipalidad de Siguatepeque</title>
 </head>
 <body>
@@ -136,9 +137,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      <?php echo "<img src = 'data:image/;base64,".base64_encode($imagenNoticiaUpdate)."' />";;?>
                 </div> 
                 <div class="txt_field panel">
-                    <textarea name="descripcionNoticia" id="" cols="30" rows="10" required><?php echo $descripcionNoticiaUpdate; ?></textarea>
-                    <span class="span-descripcion"></span>
-                    <label for="">Descripción de Noticia</label>
+                    <textarea name="descripcionNoticia" id="editor" cols="30" rows="10" required><?php echo $descripcionNoticiaUpdate; ?></textarea>
+                    <!-- <span class="span-descripcion"></span>
+                    <label for="">Descripción de Noticia</label> -->
                 </div>
                 <div class="editar-imagenes">
                     <a href="/view/editarImagenesNoticia.php?id=<?php echo $idUrl;?>">Editar Imagenes</a>
@@ -160,4 +161,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 </body>
 <script src="../js/app.js"></script>
+<script src="../js/ckeditor.js"></script>
+<script>
+		ClassicEditor
+			.create(document.querySelector('#editor'), {
+				// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+			})
+			.then(editor => {
+				window.editor = editor;
+			})
+			.catch(err => {
+				console.error(err.stack);
+			});
+</script>
 </html>

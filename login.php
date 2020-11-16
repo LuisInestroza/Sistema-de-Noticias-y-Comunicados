@@ -9,7 +9,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 // incluir la carpteta de la base de datos
 require_once("./config/db.php");
 // Definir variables
-$nombre = $nombreUsuario = $password = "";
+$nombre = $nombreUsuario = $password = $rolUser= "";
 $Error= "";
 
 // Verificar el procesamiento post
@@ -29,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar las credenciales
     if (empty($Error)) {
         // Query
-        $sql = "SELECT `idUsuario`,`nombre`, `nombreUsuario`, `password` 
-                    FROM `usuario` 
-                WHERE `nombreUsuario` = '$nombreUsuario'";
+        $sql = "SELECT idUsuario, nombre, nombreUsuario, password, (b.rol) as rol  
+                    FROM usuario a INNER JOIN roles b on b.idRoles = a.roles_idRoles 
+                 WHERE `nombreUsuario` = '$nombreUsuario'";
 
         if ($resultadoQuery = mysqli_query($conexion, $sql)) {
            
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    $nombre = $filas["nombre"];
                    $nombreUsuario = $filas["nombreUsuario"];
                    $password = $filas["password"];
+                   $rolUser = $filas["rol"];
                 }
                 if ($_POST['password'] === $password) {
                     // Si la contraseña es correcta iniciar sesion
@@ -52,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["idUsuario"] = $id;
                     $_SESSION["nombre"] = $nombre;
                     $_SESSION["nombreUsuario"] = $nombreUsuario;
+                    $_SESSION["rol"] = $rolUser;
 
                     // Redireccionar a la pagina
                     header("Location: index.php");

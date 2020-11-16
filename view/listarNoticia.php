@@ -9,6 +9,8 @@ require_once "../config/db.php";
 
 // Declarar variables
 $idUsuario = $_SESSION["idUsuario"];
+$rolUser = $_SESSION["rol"];
+
 
 // Query
 $sql ="SELECT *,date_format(fechaNoticia, '%d %M, %Y') as fechaNoticia FROM noticia 
@@ -67,13 +69,28 @@ $resultado = mysqli_query($conexion, $sql);
                     Listar Comunicados
                 </a>
             </div>
+            <?php if($rolUser === "Admin"){ ?>
+            <div class="nav">
+                <a href="">
+                    <i class="fas fa-user"></i>
+                    Usuarios
+                </a>
+            </div>
+            
+            <div class="nav">
+                <a href="">
+                    <i class="fas fa-list-alt"></i>
+                    Listar Usuarios
+                </a>
+            </div>
+            <?php } ?>
 
-            <div class="nav user">
+            <div class="nav" style="color: #ffffff; font-size: 14px; font-weight: bolder; right: 190px; position: absolute;">
                 <i class="fas fa-user"></i>
                 <?php echo $_SESSION["nombre"]; ?>
             </div>
              <div class="nav">
-                <a href="../logout.php">
+                <a href="../logout.php" style="color: #ffffff; font-weight: bolder; right: 0; position: absolute; top:0px;">
                     <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesion
                 </a>
